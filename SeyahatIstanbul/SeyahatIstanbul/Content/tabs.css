@@ -1,0 +1,280 @@
+#dvTabs {
+    width: 300px;
+    height: 50px;
+    background-color: #066BAE;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-image: url(img/guideSpacer.gif);
+    background-repeat: repeat-x;
+    background-position: left bottom;
+}
+
+#dvTab1 {
+    background-image: url(img/tabs/araba.jpg);
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+
+#dvTab2 {
+    background-image: url(img/tabs/apart.jpg);
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+
+#dvTab3 {
+    background-image: url(img/tabs/tur.jpg);
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+
+.dvTab {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+    width: 100px;
+    height: 49px;
+    float: left;
+}
+
+    .dvTab:hover {
+        background-color: #077eca;
+    }
+
+.dvTabActive {
+    background-color: #077FCC;
+    height: 50px;
+}
+
+#dvArabaTabContent {
+    height: 550px;
+}
+
+.dvTabContent {
+    padding-top: 10px;
+    width: 300px;
+    height: 450px;
+    background-color: #077FCC;
+    color: #FFF;
+    font-size: 11px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: bold;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.dvTabContanir {
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 145px;
+    width: 280px;
+    background-image: url(img/guideSpacer.gif);
+    background-repeat: repeat-x;
+    background-position: left bottom;
+}
+
+.dvTabContanir2 {
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 145px;
+    width: 280px;
+}
+.dvTabContanir_3 {
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 200px;
+    width: 280px;
+    background-image: url(img/guideSpacer.gif);
+    background-repeat: repeat-x;
+    background-position: left bottom;
+}
+.dvTabAciklma {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+.dvTabAciklma2 {
+    margin-top: 15px;
+    float: left;
+}
+
+.dvDatepicker {
+    float: left;
+    margin-top: 5px;
+    width: 130px;
+    height: 34px;
+    background-color: #FFF;
+    border-radius: 4px;
+}
+
+.dvDDSaat, .dvDDOdemeTuru {
+    float: left;
+    margin-top: 5px;
+    width: 110px;
+    height: 34px;
+    background-color: #FFF;
+    border-radius: 4px;
+    margin-left: 30px;
+}
+
+.datepicker {
+    cursor: pointer;
+    border: none;
+    margin-left: 8px;
+    margin-top: 8px;
+    width: 110px;
+    float: left;
+    background-image: url(img/tabs/calendar.jpg);
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+#dvOdemeTuru {
+    margin-left: 75px;
+}
+
+#dvOdemeTuruAciklama {
+    float: left;
+}
+
+#dvClear {
+    clear: both;
+}
+
+#dvApartContent {
+    height: 180px;
+}
+
+#ddApartBitisTarihi {
+    margin-left: 10px;
+}
+
+#dvAprtSDTCnt {
+    margin-left: 45px;
+}
+
+
+div.tab_icerik {
+    border: 2px solid #ddd;
+    padding: 10px;
+    color: #aaa;
+}
+
+select, input {
+    border: none;
+    font-size: 14px;
+}
+
+option {
+    height: 25px;
+    padding-top: 4px;
+    font-size: 12px;
+    border-bottom: dotted thin #808080;
+}
+
+.dvTabSelectBox {
+    margin-top: 5px;
+    width: 270px;
+    height: 34px;
+    background-color: #FFF;
+    border-radius: 4px;
+    font-size:14px;
+    color:#333333;
+}
+
+.slectBox {
+    margin-bottom: 5px;
+    margin-left: 4px;
+    margin-top: 4px;
+    border: medium none;
+    width: 260px;
+    line-height: 25px;
+    vertical-align: middle;
+}
+
+.ddDDSaat, .ddDDOdemeTuru {
+    margin-top: 4px;
+    margin-left: 10px;
+    border: medium none;
+    width: 95px;
+    line-height: 34px;
+    vertical-align: middle;
+}
+
+.btnContent {
+    background: #aad5fc;
+    border-radius: 5px;
+    margin-top: 20px;
+    border: #153b5f 3px solid;
+    padding: 3px;
+    width: 192px;
+}
+
+.btn {
+    border:#077FCC solid thin;
+    font-family: Calibri;
+    font-size: 20px;
+    width: 180px;
+    height: 40px;
+    border-radius: 5px;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 30px;
+    vertical-align: middle;
+    color: #fff;
+    /*#AD1515*/
+    background-image: linear-gradient(top, #0099CC 0%, #27c5fa 100%);
+    background-image: linear-gradient(to bottom, #0099CC 0%, #27c5fa 100%);
+
+}
+
+    .btn:hover {
+        color: #fff;
+        background-image: linear-gradient(top, #077FCC 0%, #0099CC 100%);
+        background-image: linear-gradient(to bottom, #077FCC 0%, #0099CC 100%);
+    }
+
+/*#dvBtnKaydet {
+    color: #000;
+    margin-top: 30px;
+    margin-left: 30px;
+    width: 200px;
+    height: 40px;
+    background-color: #DFC400;
+    border-radius: 6px;
+    line-height: 40px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+    #dvBtnKaydet:hover {
+        background-color: #CEB500;
+    }*/
+
+#loading {
+    z-index: 1;
+    position: absolute;
+}
+
+    #loading #loadingImg {
+        background-color: #fff;
+        opacity: 0.5;
+        width: 300px;
+        height: 600px;
+    }
+
+#loadingImg img {
+    margin-left: 100px;
+    margin-top: 260px;
+}
+
+#yukleniyor {
+    position: absolute;
+    z-index: 2;
+    color: #000;
+    margin-left: 100px;
+    margin-top: -250px;
+}

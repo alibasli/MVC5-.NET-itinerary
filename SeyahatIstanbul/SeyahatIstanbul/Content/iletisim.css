@@ -1,0 +1,57 @@
+﻿body {
+	background-color: #9bd6fb;
+	font-family: Tahoma;
+    
+}
+#mesaj {
+    margin-left:200px;
+	width: 427px;
+	background-image: url('img/mektup.png');
+    float:left;
+}
+.yan {
+    float: left;
+	margin: 10px;
+    }
+#tasiyici {
+	padding: 10px 0px 0px 0px;
+}
+#formalani {
+	padding: 30px;
+	height: 50px;
+	overflow: hidden;
+}
+#resim {
+	height: 208px;
+	width: 427px;
+	background: transparent url('img/mektup.png') 0px -495px no-repeat;
+}
+#mesajalani {
+	margin: 28px 0px 60px 12px;
+	width: 345px;
+	height: 128px;
+	overflow: auto;
+	border: 0px;
+	color: #bbbbbb;
+	resize: none;
+}
+.input {
+	height: 20px;
+	line-height: 25px;
+	width: 342px;
+	margin: 4px 0px 16px 8px;
+	padding: 0px 0px 0px 3px;
+	border: 0px;
+	color: #bbbbbb;
+}
+#gonder {
+	text-align: center;
+}
+.gonder {
+	background-image: url('img/gonder.gif');
+	background-repeat: no-repeat;
+	width: 106px;
+	height: 35px;
+	border: 0px;
+	cursor: pointer !important;
+}

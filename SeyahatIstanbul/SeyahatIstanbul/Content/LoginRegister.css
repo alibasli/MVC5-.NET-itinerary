@@ -1,0 +1,148 @@
+﻿body {
+    font-family: Calibri,Arial;
+    padding:0px;
+}
+
+#bodyContainer {
+    width: 100%;
+}
+
+#loading {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+    #loading img, #loading div {
+        margin-left: 170px;
+        margin-top: 120px;
+    }
+
+.clear {
+    width: 100%;
+    clear: both;
+    margin-top: 8px;
+}
+
+header {
+    color:#fff;
+    height: 50px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    /*background-image: url("img/logo/baslikArka.png");*/
+    background-image: url("img/headerBack.png");
+    /*background-image: -webkit-linear-gradient(top, #fff -25px, #0776AF 100%);
+    background-image: linear-gradient(to bottom, #fff -25px, #0776AF 100%);*/
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#dvBaslik {
+    height: 100%;
+    color: #fff;
+    font-size: 29px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    line-height: 50px;
+    vertical-align: middle;
+}
+
+.textStil {
+    width: 164px;
+    height: 30px;
+}
+
+.control-label {
+    font-size: 16px;
+    font-family: Calibri,Arial;
+    color: #0678AF;
+    font-size: 15px;
+    text-align: right;
+    float: left !important;
+}
+
+.form-control {
+    float: left;
+    margin-left: 20px;
+}
+
+.btn, .btn-default {
+    width: 100px;
+}
+
+.left {
+    float: left;
+}
+
+.datepicker {
+    cursor: pointer;
+    background-image: url(img/tabs/calendar_2.jpg);
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+.txt {
+    height: 34px;
+    font-size: 18px;
+    width: 290px;
+}
+
+#frmUser {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    width: 100%;
+}
+
+#chName {
+    width: 125px;
+}
+
+#chSurname {
+    width: 125px;
+}
+
+.error {
+    background: #d04149;
+}
+.hataAlani {
+    color:#ff0000;
+}
+.sucsess {
+    color:#097935;
+    font-size:20px;
+    margin-top:30px;
+}
+.sucsessIcon {
+    float:left;
+    background-image: url(img/success_1.png);
+    background-repeat:no-repeat;
+    background-size:30px 30px;
+    background-position:left center;
+    width:50px;
+    height:30px;
+
+}
+.error2 {
+    color:#ff0000;
+    font-size:20px;
+    margin-top:30px;
+}
+.errorIcon {
+    float:left;
+    background-image: url(img/error-icon_1.gif);
+    background-repeat:no-repeat;
+    background-size:30px 30px;
+    background-position:left center;
+    width:50px;
+    height:30px;
+
+}

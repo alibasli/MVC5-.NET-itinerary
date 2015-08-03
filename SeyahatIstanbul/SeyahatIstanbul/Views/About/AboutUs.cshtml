@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Hakkımızda-Seyahat İstanbul";
+}
+<link href="~/Content/index.css" rel="stylesheet" />
+@section rsleftContent{
+<h2> Hakkımızda </h2>
+
+<article id="infContent2">
+    <div id="rentCar" class="inf2">
+        <a href="@Url.Action("VehicleList","Vehicle")"><img src="~/Content/img/rent_vehicle_inf.jpg" alt="resim yükleniyor" style="width: 260px; height:200px;" /></a>
+        <a href="@Url.Action("ApartList","Apart")"><img src="~/Content/img/rent_apart_inf.jpg" alt="resim yükleniyor" style="width: 260px; height:200px;" /></a>
+        <a href="@Url.Action("TourList","Tour")"><img src="~/Content/img/rent_tur_inf.jpg" alt="resim yükleniyor" style="width: 260px; height:200px;" /></a>
+        <h3><a href="@Url.Action("VehicleList","Vehicle")" style="text-decoration: none;">Araç Kiralama Hizmeti</a></h3>
+        Müşterilerimize kaliteli ve yüksek hizmet sağlamak için çıktığımız bu yolda geniş araç filomuzla hizmetinizdeyiz.
+        Bu sebeple, araç filomuzu sürekli yeniliyoruz ve araçlarımızın bakımlarını yetkili servislerde periyodik olarak yaptırıyoruz.
+        İhtiyaçlarınıza uygun olacak tüm modelleri filomuzda bulabiliriz. Ekonomik, Konfor, Üst, Lüks ve Özel olarak gruplandırdığımız araçlarımızı beğeninize sunuyoruz.
+
+    </div>
+    <div class="clear"></div>
+    <div class="inf2">
+        
+        <h3><a href="@Url.Action("ApartList", "Apart")"  style="text-decoration: none;">Apart Kiralama Hizmeti</a></h3>
+        Rahatınız ve güvenliğiniz için ister ailenizle ister tek yada arkadaşlarınızla kalabileceğiniz 3 + 1, 2 + 1, 1 + 1, apartlarımız mevcuttur.
+        Apartlarımızda aradığınız herşeyi bulabilirsiniz. Ulaşım kolaylığı ve temizliği ile apartlarımızı hizmetinize sunuyoruz.
+        İşimiz Müşterilerimizi en iyi şekilde ağırlayıp en güzel şekilde uğurlamaktır.
+    </div>
+    <div class="clear"></div>
+    <div class="inf2">
+        
+        <h3><a href="@Url.Action("TourList", "Tour")"  style="text-decoration: none;">İstanbul İçi Tur Hizmeti</a></h3>
+        Yedi tepe İstanbul'u hem gözlerinizle hemde kalbinizle görmeniz için buradayız.
+        İstanbul turumuz ile aklınıza gelebilecek hertürlü tarihi ve doğal güzellikleri ayağınıza götürüyoruz.
+        Ayasofya'sıyla, Sultan Ahmeti'yle, boğaz manzarasıyla İstanbul'u daha önce görmediğiniz güzellikleriyle sunuyoruz ve "Memnuniyetiniz hedefimizdir !" slogonuyla yola çıkıyoruz.
+    </div>
+</article>
+    }

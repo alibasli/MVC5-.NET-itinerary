@@ -1,0 +1,437 @@
+﻿@model SeyahatIstanbul.Models.HomePageModel
+<script>
+    $(function () {
+
+        $("#loading").css("left", $("#dvLeftContent").position().left);
+        $("#loading").css("top", $("#dvLeftContent").position().top);
+
+        $(".dvTab:first").addClass("dvTabActive");
+        $(".dvTabContent").hide();
+        $(".dvTabContent:first").show();
+        $(".dvTab").click(function (e) {
+            var index = $(this).index();
+            $("#dvArabaTabContent").trigger("reset");
+            $("#dvApartTabContent").trigger("reset");
+            $("#dvTourTabContent").trigger("reset");
+            $(".dvTab").removeClass("dvTabActive");
+            $(this).addClass("dvTabActive");
+            $(".dvTabContent").hide();
+            $(".dvTabContent:eq(" + index + ")").show();
+        });
+        $.datepicker.regional['tr'] = {
+            closeText: 'kapat',
+            prevText: '&#x3c;geri',
+            nextText: 'ileri&#x3e',
+            currentText: 'bugün',
+            monthNames: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+            'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+            monthNamesShort: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz',
+            'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
+            dayNames: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
+            dayNamesShort: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
+            dayNamesMin: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
+            weekHeader: 'Hf',
+            dateFormat: 'dd.mm.yy',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''
+        };
+        $.datepicker.setDefaults($.datepicker.regional['tr']);
+        //Vehicle
+        var pickerOpts = {
+            onSelect: function () {
+                var date2 = $('#dtVehStartDate').datepicker('getDate', '+1d');
+                date2.setDate(date2.getDate() + 1);
+                $('#dtVehEndDate').datepicker('setDate', date2);
+
+                $("#dtVehEndDate").datepicker("destroy");
+                var pickerOpts2 = {
+                    minDate: $("#dtVehStartDate").val()
+                }
+                $("#dtVehEndDate").datepicker(pickerOpts2);
+            },
+            minDate: new Date(),
+            maxDate: "+30"
+        }
+
+        $("#dtVehStartDate").datepicker(pickerOpts);
+        $("#dtVehEndDate").datepicker(pickerOpts);
+        //Apart
+        var pickerOpts_2 = {
+            onSelect: function () {
+                var date2 = $('#dtApartStartDate').datepicker('getDate', '+1d');
+                date2.setDate(date2.getDate() + 1);
+                $('#dtApartEndDate').datepicker('setDate', date2);
+
+                $("#dtApartEndDate").datepicker("destroy");
+                var pickerOpts2 = {
+                    minDate: $("#dtApartStartDate").val()
+                }
+                $("#dtApartEndDate").datepicker(pickerOpts2);
+            },
+            minDate: new Date(),
+            maxDate: "+60"
+        }
+
+        $("#dtApartStartDate").datepicker(pickerOpts_2);
+        $("#dtApartEndDate").datepicker(pickerOpts_2);
+
+        //tour
+        var pickerOpts_3 = {
+            onSelect: function () {
+                var date2 = $('#dtTourDate').datepicker('getDate', '+1d');
+                date2.setDate(date2.getDate() + 1);
+            },
+            minDate: new Date(),
+            maxDate: "+60"
+        }
+        $("#dtTourDate").datepicker(pickerOpts_3);
+
+    });
+
+     function sessionControl() {
+        $.ajax({
+            url: '@Url.Action("sessionControl", "Setting")',
+            type: 'POST',
+            success: function (data) {
+                $('#session').val(data);
+                return;
+            },
+            error: function () {
+                alert("İstenmeyen bir hata oluştu lütfen tekrar deneyiniz");
+            }
+        });
+    }
+
+    function booking(form , url_) {
+        $.ajax({
+            url: url_,
+            type: 'POST',
+            data: form.serialize(),
+            beforeSend: function () {
+                $('#loading').show();
+            },
+            complete: function () {
+                $('#loading').hide();
+            },
+            success: function (data) {
+                if (data.dgErrorCode == 5) {
+                    $("#dvMesaj").html("<div class='error2'><div class='errorIcon'></div>" + data.chError + " </div>");
+
+                    $("#dialog-message").dialog({
+                        maxWidth: 600,
+                        maxHeight: 300,
+                        width: 500,
+                        height: 300,
+                        modal: true,
+                        buttons: {
+                            Ok: function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                }
+                else if (data.dgErrorCode != 0) {
+                    $("#dvMesaj").html("<div class='error2'><div class='errorIcon'></div>" + data.chError + " </div>");
+
+                    $("#dialog-message").dialog({
+                        maxWidth: 400,
+                        maxHeight: 250,
+                        width: 400,
+                        height: 250,
+                        modal: true,
+                        buttons: {
+                            Ok: function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                }
+                else {
+                    $("#dvMesaj").html("<div class='sucsess'><div class='sucsessIcon'></div>" + data.chError + " </div>");
+                    $("#dialog-message").dialog({
+                        maxWidth: 400,
+                        maxHeight: 250,
+                        width: 400,
+                        height: 250,
+                        modal: true,
+                        buttons: {
+                            Ok: function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                }
+
+
+                @*if (data. == "-1")
+                $('#uyeGirisi').trigger('click');
+                //window.location.href = '@Url.Action("VehicleBooking", "Booking")';
+                //alert(data);*@
+            },
+            error: function () {
+
+                alert("İstenmeyen bir hata oluştu lütfen tekrar deneyiniz");
+            }
+        });
+    }
+
+    function vehicleRent() {
+        $.ajax({
+            url: '@Url.Action("sessionControl", "Setting")',
+            type: 'POST',
+            success: function (data) {
+                if (data == "0") {
+                    $('#uyeGirisi').trigger('click');
+                    return false;
+                }
+                else if ($('#rfVehicleId').val() == ""
+                        || $('#rfVehDeliveryPlace_1').val() == ""
+                        || $('#dtVehStartDate').val() == ""
+                        || $('#rfVehDeliveryPlace_2').val() == ""
+                        || $('#dtVehEndDate').val() == "") {
+
+                    alert("Bilgiler boş geçilemez");
+                    return false;
+                }
+                else {
+                    $('#rfVehCategoryId').val("1");
+                    var form = $('#dvArabaTabContent');
+                    var url_ = '@Url.Action("VehicleBooking", "Booking")';
+                    booking(form,url_);
+                    return true;
+                }
+            },
+            error: function () {
+                alert("İstenmeyen bir hata oluştu lütfen tekrar deneyiniz");
+            }
+        });
+
+    }
+    function apartRent() {
+        $.ajax({
+            url: '@Url.Action("sessionControl", "Setting")',
+            type: 'POST',
+            success: function (data) {
+                if (data == "0") {
+                    $('#uyeGirisi').trigger('click');
+                    return false;
+                }
+                else if ($('#rfApartId').val() == ""
+                        || $('#dtApartStartDate').val() == ""
+                        || $('#dtApartEndDate').val() == "") {
+
+                    alert("Bilgiler boş geçilemez");
+                    return false;
+                }
+                else {
+                    $('#rfApartCategoryId').val("2");
+                    var form = $('#dvApartTabContent');
+                    var url_ = '@Url.Action("ApartBooking", "Booking")';
+                    booking(form, url_);
+                    return true;
+                }
+            },
+            error: function () {
+                alert("İstenmeyen bir hata oluştu lütfen tekrar deneyiniz");
+            }
+        });
+
+    }
+    function tourRent() {
+        $.ajax({
+            url: '@Url.Action("sessionControl", "Setting")',
+            type: 'POST',
+            success: function (data) {
+                if (data == "0") {
+                    $('#uyeGirisi').trigger('click');
+                    return false;
+                }
+                else if ($('#rfTourId').val() == ""
+                        || $('#dtTourDate').val() == "") {
+
+                    alert("Bilgiler boş geçilemez");
+                    return false;
+                }
+                else {
+                    $('#rfTourCategoryId').val("3");
+                    var form = $('#dvTourTabContent');
+                    var url_ = '@Url.Action("TourBooking", "Booking")';
+                    booking(form, url_);
+                    return true;
+                }
+
+            },
+            error: function () {
+                alert("İstenmeyen bir hata oluştu lütfen tekrar deneyiniz");
+            }
+        });
+
+    }
+</script>
+
+<div id="dvLeftContent">
+    <div id="dvTabExplanation"></div>
+    <div id="dvTabs">
+        <div id="dvTab1" class="dvTab"></div>
+        <div id="dvTab2" class="dvTab"></div>
+        <div id="dvTab3" class="dvTab"></div>
+    </div>
+    @Html.Hidden("session")
+    <form id="dvArabaTabContent" class="dvTabContent">
+        @Html.HiddenFor(d => d.rfVehCategoryId, "1")
+        <div class="dvTabContanir" style="height:70px">
+            <div id="dvArac">
+                <div class="dvTabAciklma">@Html.LabelFor(d => d.lblSelectVehicle, new { @class = "tabAciklama" })</div>
+                <div class="dvTabDeger dvTabSelectBox">
+                    @Html.DropDownListFor(d => d.rfVehicleId, new SelectList(ViewBag.TabVehicleList, "Value", "Text"), "Seçiniz...", new { @class = "slectBox" })
+                </div>
+            </div>
+        </div>
+        <div class="dvTabContanir">
+            <div id="dvVerisYeri">
+                @*<div class="dvTabAciklma">@Html.Label("lblArac", "Teslim Almak İstediğiniz Yer", new { @class = "tabAciklama" })</div>*@
+                <div class="dvTabAciklma">@Html.LabelFor(d => d.lblSlctVehPlace1, new { @class = "tabAciklama" })</div>
+                <div class="dvTabDeger dvTabSelectBox">
+                    @Html.DropDownListFor(d => d.rfVehDeliveryPlace_1, new SelectList(ViewBag.VehicleDeliveryPlace, "Value", "Text"), "Seçiniz...", new { @class = "slectBox" })
+                </div>
+            </div>
+            <div id="dvCikisTarihi">
+                @*<div id="dvAracCikisTarihiAciklama" class="dvTabAciklma">Alış Tarihi ve Saatiniz</div>*@
+                <div class="dvTabAciklma">@Html.LabelFor(d => d.lblVehDate1, new { @class = "tabAciklama" })</div>
+                <div id="ddAracCikisTarihi" class="dvDatepicker">
+                    @Html.TextBoxFor(d => d.dtVehStartDate, new { @class = "datepicker" })
+                </div>
+                <div id="dvAracCikisSaati" class="dvDDSaat">
+                    @Html.DropDownListFor(d => d.Vehcloock_1, new SelectList(ViewBag.Clock, "Value", "Text", "11"), new { @class = "ddDDSaat" })
+                </div>
+            </div>
+        </div>
+        <div class="dvTabContanir">
+
+            <div id="dvGeriAlisYeri">
+                @*<div class="dvTabAciklma">@Html.Label("lblArac", "Teslim Etmek İstediğniz Yer", new { @class = "tabAciklama" })</div>*@
+                <div class="dvTabAciklma">@Html.LabelFor(d => d.lblSlctVehPlace2, new { @class = "tabAciklama" })</div>
+                <div class="dvTabDeger dvTabSelectBox">
+                    @Html.DropDownListFor(d => d.rfVehDeliveryPlace_2, new SelectList(ViewBag.VehicleDeliveryPlace, "Value", "Text"), "Seçiniz...", new { @class = "slectBox" })
+                </div>
+            </div>
+            <div id="dvAlisTarihi">
+                @*<div id="dvAracAlisTarihiAciklama" class="dvTabAciklma">Veriş Tarihi ve Saatiniz</div>*@
+                <div class="dvTabAciklma">@Html.LabelFor(d => d.lblVehDate2, new { @class = "tabAciklama" })</div>
+                <div id="ddAracAlisTarihi" class="dvDatepicker">
+                    @Html.TextBoxFor(d => d.dtVehEndDate, new { @class = "datepicker" })
+                </div>
+                <div id="dvAracAlisSaati" class="dvDDSaat">
+                    @Html.DropDownListFor(d => d.Vehcloock_2, new SelectList(ViewBag.Clock, "Value", "Text", "11"), new { @class = "ddDDSaat" })
+                </div>
+            </div>
+        </div>
+        <div id="dvKaydet" class="dvTabContanir2">
+            @*<div id="dvOdemeTuruAciklama" class="dvTabAciklma">Para Biriminiz</div>*@
+            <div id="dvClear"></div>
+            <div id="loading" style="display:none">
+                <div id="loadingImg"><img src="~/Content/img/loading11.gif"></div>
+                <div id="yukleniyor">Kaydediliyor...</div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 btnContent">
+                    @Html.LabelFor(d => d.lblSave, new { id = "btnSave", @class = "btn", onclick = "vehicleRent()" })
+                </div>
+            </div>
+        </div>
+    </form>
+    <form id="dvApartTabContent" class="dvTabContent">
+        @Html.HiddenFor(d => d.rfApartCategoryId, "2")
+        <div class="dvTabContanir" style="height:70px">
+            <div id="dvArac">
+                <div class="dvTabAciklma">@Html.LabelFor(d => d.lblSelectApart, new { @class = "tabAciklama" })</div>
+                <div class="dvTabDeger dvTabSelectBox">
+                    @Html.DropDownListFor(d => d.rfApartId, new SelectList(ViewBag.TabApartleList, "Value", "Text"), "Seçiniz...", new { @class = "slectBox" })
+                </div>
+            </div>
+        </div>
+        <div class="dvTabContanir_3">
+            <div id="dvCikisTarihi">
+                @*<div id="dvAracCikisTarihiAciklama" class="dvTabAciklma">Alış Tarihi ve Saatiniz</div>*@
+                <div class="dvTabAciklma">@Html.LabelFor(d => d.lblVehDate1, new { @class = "tabAciklama" })</div>
+                <div id="ddAracCikisTarihi" class="dvDatepicker">
+                    @Html.TextBoxFor(d => d.dtApartStartDate, new { @class = "datepicker" })
+                </div>
+                <div id="dvAracCikisSaati" class="dvDDSaat">
+                    @Html.DropDownListFor(d => d.apartCloock_1, new SelectList(ViewBag.Clock, "Value", "Text", "11:00"), new { @class = "ddDDSaat" })
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="clear"></div>
+            <div class="clear"></div>
+            <div id="dvAlisTarihi">
+                @*<div id="dvAracAlisTarihiAciklama" class="dvTabAciklma">Veriş Tarihi ve Saatiniz</div>*@
+                <div class="dvTabAciklma">@Html.LabelFor(d => d.lblVehDate2, new { @class = "tabAciklama" })</div>
+                <div id="ddAracAlisTarihi" class="dvDatepicker">
+                    @Html.TextBoxFor(d => d.dtApartEndDate, new { @class = "datepicker" })
+                </div>
+                <div id="dvAracAlisSaati" class="dvDDSaat">
+                    @Html.DropDownListFor(d => d.apartCloock_2, new SelectList(ViewBag.Clock, "Value", "Text", "11"), new { @class = "ddDDSaat" })
+                </div>
+            </div>
+        </div>
+        <div id="dvKaydet" class="dvTabContanir2">
+            @*<div id="dvOdemeTuruAciklama" class="dvTabAciklma">Para Biriminiz</div>*@
+            <div id="dvClear"></div>
+            <div id="loading" style="display:none">
+                <div id="loadingImg"><img src="~/Content/img/loading11.gif"></div>
+                <div id="yukleniyor">Kaydediliyor...</div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 btnContent">
+                    @Html.LabelFor(d => d.lblSave, new { id = "btnSave", @class = "btn", onclick = "apartRent()" })
+                </div>
+            </div>
+        </div>
+    </form>
+    <form id="dvTourTabContent" class="dvTabContent" style="height:340px;">
+        @Html.HiddenFor(d => d.rfTourCategoryId, "3")
+        <div class="dvTabContanir" style="height:70px">
+            <div id="dvArac">
+                <div class="dvTabAciklma">@Html.LabelFor(d => d.lblSelectTour, new { @class = "tabAciklama" })</div>
+                <div class="dvTabDeger dvTabSelectBox">
+                    @Html.DropDownListFor(d => d.rfTourId, new SelectList(ViewBag.TabTourList, "Value", "Text"), "Seçiniz...", new { @class = "slectBox" })
+                </div>
+            </div>
+        </div>
+        <div class="dvTabContanir_3" style="height:90px;">
+            <div id="dvCikisTarihi">
+                @*<div id="dvAracCikisTarihiAciklama" class="dvTabAciklma">Alış Tarihi ve Saatiniz</div>*@
+                <div class="dvTabAciklma">@Html.LabelFor(d => d.lblTourDate, new { @class = "tabAciklama" })</div>
+                <div id="ddAracCikisTarihi" class="dvDatepicker">
+                    @Html.TextBoxFor(d => d.dtTourDate, new { @class = "datepicker" })
+                </div>
+                <div id="dvAracCikisSaati" class="dvDDSaat">
+                    @Html.DropDownListFor(d => d.tourCloock_1, new SelectList(ViewBag.Clock, "Value", "Text", "11"), new { @class = "ddDDSaat" })
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div id="dvKaydet" class="dvTabContanir2">
+            @*<div id="dvOdemeTuruAciklama" class="dvTabAciklma">Para Biriminiz</div>*@
+            <div id="dvClear"></div>
+            <div id="loading" style="display:none">
+                <div id="loadingImg"><img src="~/Content/img/loading11.gif"></div>
+                <div id="yukleniyor">Kaydediliyor...</div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 btnContent">
+                    @Html.LabelFor(d => d.lblSave, new { id = "btnSave", @class = "btn", onclick = "tourRent()" })
+                </div>
+            </div>
+        </div>
+    </form>
+    <div id="dialog-message" title="Mesaj">
+        <p>
+            <div id="dvMesaj"></div>
+        </p>
+
+    </div>
+</div>

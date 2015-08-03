@@ -1,0 +1,127 @@
+﻿@model SeyahatIstanbul.Models.HomePageModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+
+    <link href="~/Content/colorbox.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.colorbox-min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.3.custom.min.js"></script>
+    @RenderSection("rsHead", required: false)
+    <script>
+        $(function () {
+            $("#uyeGirisi").colorbox({ iframe: true, width: "500px", height: "400px" });
+            $("#yeniUye").colorbox({ iframe: true, width: "500px", height: "600px" });
+            $("#ddLng").change(function () {
+
+                var item = { lng: this.value };
+                $.ajax({
+                    url: '@Url.Action("lngSetting", "Setting")',
+                    type: 'POST',
+                    data: item,
+                    beforeSend: function () {
+                        $('#loading').show();
+                    },
+                    complete: function () {
+                        $('#loading').hide();
+                    },
+                    success: function () {
+                        location.reload();
+                    },
+                    error: function () {
+                        alert("İstenmeyen bir hata oluştu lütfen tekrar deneyiniz");
+                    }
+                });
+            });
+
+        });
+    </script>
+    <style>
+        #dvLng {
+            float: right;
+            margin-top: 8px;
+            margin-left: 12px;
+        }
+
+        #uyeGirisi {
+            float: right;
+        }
+
+        .error {
+            background-color: #dd9090 !important;
+        }
+        .form-control {
+            width:110%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <div class="dvHeaderContainer">
+                <div id="dvLogo" class="dvHeaderContent">
+                    @Html.ActionLink(" ", "Index", "Home", null, new { @class = "logo" })
+                </div>
+                @*<div id="dvSearchContainer" class="dvHeaderContent">
+                        <input id="txtSearch" />
+                        <div id="dvSearchButton"></div>
+                    </div>*@
+                <div id="dvLng" class="form-group">
+                    @Html.DropDownListFor(d => d.ddLng, new SelectList(ViewBag.ddLng, "Value", "Text"), new { @class = "form-control" })
+                </div>
+                @Html.Partial("_LoginPartial")
+
+            </div>
+
+        </header>
+        <nav>
+            <div id="dvNavContainer">
+                <div class="dvNavButton">
+                    <a href="@Url.Action("Index", "Home")" class="navButton">@Html.LabelFor(d => d.menuHome)</a>
+                </div>
+                <div class="dvAyracNav"></div>
+                <div class="dvNavButton">
+                    <a href="@Url.Action("VehicleList", "Vehicle")" class="navButton">@Html.LabelFor(d => d.menuVehicleList)</a>
+                </div>
+                <div class="dvAyracNav"></div>
+                <div class="dvNavButton">
+                    <a href="@Url.Action("ApartList", "Apart")" class="navButton">@Html.LabelFor(d => d.menuApartList)</a>
+                </div>
+                <div class="dvAyracNav"></div>
+                <div class="dvNavButton">
+                    <a href="@Url.Action("Tourlist", "Tour")" class="navButton">@Html.LabelFor(d => d.menuTourlist)</a>
+                </div>
+                <div class="dvAyracNav"></div>
+                <div class="dvNavButton">
+                    <a href="@Url.Action("AboutUs", "About")" class="navButton">@Html.LabelFor(d => d.menuAbout)</a>
+                </div>
+                <div class="dvAyracNav"></div>
+                <div class="dvNavButton">
+                    <a href="@Url.Action("Communication", "Communication")" class="navButton communication">@Html.LabelFor(d => d.menuCommunication)</a>
+                </div>
+            </div>
+        </nav>
+        <div id="bodyContainer">
+            @RenderSection("rsTitle", required: false)
+            <aside id="leftContent">
+                @RenderSection("rsleftContent", required: false)
+            </aside>
+            <section>
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+
+        </footer>
+    </div>
+</body>
+</html>  

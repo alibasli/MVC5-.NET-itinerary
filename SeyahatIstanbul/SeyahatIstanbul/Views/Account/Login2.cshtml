@@ -1,0 +1,150 @@
+﻿@model SeyahatIstanbul.Models.CustomerLogin
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="~/Content/LoginRegister.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+
+    <script src="~/Content/Jquery/js/jquery-1.10.2.js"></script>
+    <script src="~/Content/Jquery/js/jquery-ui-1.10.4.custom.min.js"></script>
+    <link href="~/Content/Jquery/css/start/jquery-ui-1.10.4.custom_min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.ui.datepicker.js"></script>
+
+    <style>
+        form {
+            padding: 10px;
+        }
+
+        .error {
+            border: 1px solid #b94a48 !important;
+            background-color: #fee !important;
+        }
+        .forgotPassword {
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <div id="dvBaslik">Üye Kaydı</div>
+        </header>
+        <div class="dvClear"></div>
+        <div id="bodyContainer">
+            <section>
+                <form id="frmUser" method="post">
+                    <div id="hata" class="hataAlani"></div>
+                    <div class="clear"></div>
+                    <div class="control-group">
+                        @Html.LabelFor(d => d.chEmail, new { @class = "control-label" })
+                        <div class="controls clear">
+                            @Html.TextBoxFor(d => d.chEmail, new { @class = "txt" })
+                            @Html.ValidationMessageFor(d => d.chEmail)
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="control-group">
+                        @Html.LabelFor(d => d.chPassword, new { @class = "control-label" })
+                        <div class="controls clear">
+                            @Html.PasswordFor(d => d.chPassword, new { @class = "txt" })
+                            @Html.ValidationMessageFor(d => d.chPassword)
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="control-group btn_group">
+                        <div class="controls">
+                            <button id="btnSave" type="submit" class="btn btn-large btn-block btn-primary">Giriş</button>
+                            <br />
+                            <a href="@Url.Action("ForgotPassword", "Account")" class="forgotPassword" id="forgotPassword">@Html.LabelFor(d => d.chForgotPassword)</a>
+                        </div>
+                    </div>
+                </form>
+                <script type="text/javascript">
+                    $("form").validate({
+                        showErrors: function (errorMap, errorList) {
+
+                            // Clean up any tooltips for valid elements
+                            $.each(this.validElements(), function (index, element) {
+                                var $element = $(element);
+
+                                $element.data("title", "") // Clear the title - there is no error associated anymore
+                                .removeClass("error")
+                                .tooltip("destroy");
+                            });
+
+                            // Create new tooltips for invalid elements
+                            $.each(errorList, function (index, error) {
+                                var $element = $(error.element);
+
+                                $element.tooltip("destroy") // Destroy any pre-existing tooltip so we can repopulate with new tooltip content
+                                .data("title", error.message)
+                                .addClass("error")
+                                .tooltip(); // Create a new tooltip based on the error messsage we just set in the title
+                            });
+                        },
+                        rules: {
+                            chEmail: { email: true, required: true },
+                            chPassword: { required: true }
+                        },
+                        messages: {
+                            chEmail: {
+                                required: "Email alanı boş geçilmez",
+                                email: "Geçerli bir email giriniz"
+                            },
+                            chPassword: "Şifre alanı boş geçilmez"
+                        },
+                        submitHandler: function (form) {
+                            $.ajax({
+                                url: '@Url.Action("Login", "Account")',
+                                type: 'POST',
+                                data: $('#frmUser').serialize(),
+                                success: function (data_1) {
+                                    if (data_1 == 0) {
+                                        $('#hata').html("Hatlı Giriş");
+                                    }
+                                    else if (data_1 == 1) {
+                                        $('#frmUser').html("<div class='sucsess'><div class='sucsessIcon'></div> Başarılı giriş</div>");
+                                        //setTimeout(function () { $("#cboxClose").trigger("click"); }, 2000);
+                                        window.setTimeout(' window.parent.location.reload();', 500);
+                                        //window.parent.location.reload();
+                                    }
+                                    else {
+                                        $('#frmUser').html("<div class='error2'><div class='errorIcon'></div>->İstenmeyen bir hata oluştu lütfen daha sonra tekrar deneyiniz </div>");
+                                        //setTimeout(function () { $("#cboxClose").trigger("click"); }, 2000);
+                                        window.setTimeout(' window.parent.location.reload();', 1000);
+                                        //window.parent.location.reload();
+                                    }
+
+                                },
+                                error: function () {
+                                    alert("İstenmeyen bir hata oluştu lütfen tekrar deneyiniz");
+                                    window.setTimeout(' window.parent.location.reload();', 1000);
+                                }
+                            });
+                        }
+                    });
+                    function call(data) {
+                        alert(data);
+                    }
+                    $(function () {
+                        $("#forgotPassword").colorbox({ iframe: true, width: "500px", height: "350px" });
+                        //$('.forgotPassword').click(function () {
+
+                        //});
+                    });
+                </script>
+            </section>
+        </div>
+        <footer></footer>
+    </div>
+</body>
+</html>

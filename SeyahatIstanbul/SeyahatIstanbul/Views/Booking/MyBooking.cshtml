@@ -1,0 +1,81 @@
+﻿@model IEnumerable<SeyahatIstanbul.Models.BookingList>
+@using SeyahatIstanbul.Models
+@{
+    ViewBag.Title = "Araç Filomuz - Seyahat İstanbul";
+}
+@section rsHead{
+    <link href="~/Content/BookingList.css" rel="stylesheet" />
+}
+<script>
+    //$(function () {
+    //    $('.btnBooking').hover(function () {
+    //        $(this).addClass("hover");
+    //    });
+    //});
+</script>
+
+<div id="dvContent">
+    <h1>Araç Filomuz</h1>
+    <div class="vhContainer">
+
+        @foreach (var item in ViewBag.BookingList as IList<BookingList>)
+        {
+            <div class="process">
+                <div class="pHeader">
+                    <div class="pName left"> @item.chProductName </div>
+                    <div class="informationTitle left">Rezarvasyon Bilgileri</div>
+                    <div class="status left"> Durum</div>
+                </div>
+                <div class="vhContent">
+                    <div class="pImage left"><img src="@Url.Content(@item.chImageName)" width="210" height="130" alt="resim yükleniyor" /></div>
+                    @if (item.rfCategoryId == 1)
+                    {
+                        <div class="information left">
+                            <div class="desc left">Teslim Alış Yeriniz</div><div class="property left">@item.chDeliveryPlace_1</div>
+                            <div class="clear"></div>
+                            <div class="desc left">Teslim Alış Tarihiz</div><div class="property left">@item.dtStartDate</div>
+                            <div class="clear"></div>
+                            <div class="desc left">Teslim Ediş Yeriniz</div><div class="property left">@item.chDeliveryPlace_2</div>
+                            <div class="clear"></div>
+                            <div class="desc left">Teslim Ediş Tarihiz</div><div class="property left">@item.dtEndDate</div>
+                            <div class="clear"></div>
+                            <div class="desc left">Toplam Fiyat</div><div class="property left">@item.dgTotalPrice TL</div>
+                        </div>
+                    }
+                    <div class="right">
+                        <div class="durum">@Html.Raw(item.chDurum)</div>
+                        <div class="clear"></div>
+                        <div class="bookingContent">
+                            <a href="@Url.Action("VehicleBooking", "Booking", new { id = @item.rfProductId,categoryId = @item.rfCategoryId })" style="text-decoration: none;"><div class="btnBooking">Paypal Ödeme</div> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<div id="onay" title="Mesaj">
+    <p>
+        <div class="dvMesaj"> Rezarvasyonunuz onay bekliyor. Paypal ile ödeme yaparak kiralama işlemini yapa bilirsiniz</div>
+    </p>
+
+</div>
+<script>
+    $(function () {
+        $(".onayBekliyor").click(function () {
+            $("#onay").dialog({
+                maxWidth: 600,
+                maxHeight: 500,
+                width: 300,
+                height: 200,
+                modal: true,
+                buttons: {
+                    Ok: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    });
+</script>

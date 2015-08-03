@@ -1,0 +1,139 @@
+﻿body {
+}
+
+aside {
+    width: 300px;
+}
+
+.dvClear {
+    clear: both;
+}
+
+#bodyContent {
+    width: 976px;
+    border: #808080 1px solid;
+    border-radius: 5px;
+}
+
+h1 {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    margin: 0 0 10px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+    margin-right: 10px;
+}
+
+.vhContainer, .vehicle {
+    width: 974px;
+}
+
+.vehicle {
+    margin-top:40px;
+    height: 180px;
+    border: solid thin #5f9fd8;
+    border-radius: 6px;
+}
+
+.vhHeader {
+    padding: 4px;
+    color: #FFFFFF;
+    font-family: Trebuchet MS;
+    font-size: 15px;
+    font-weight: bold;
+    width: 972px;
+    height: 30px;
+    border-radius: 5px;
+    /*#2D5A84   -   4586C0*/
+    background-image: linear-gradient(left, #2D5A84 0%, #5f9fd8 100%);
+    background-image: linear-gradient(to right, #2D5A84 0%, #5f9fd8 100%);
+    /*background-image: url(img/vhHeader_bg.jpg);*/
+}
+
+.vhName {
+    margin-left: 16px;
+    width: 218px;
+}
+
+.vhPropertyTitle, .vhProperty {
+    margin-left: 66px;
+    width: 220px;
+}
+
+.vhImage {
+    border: solid #808080 thin;
+    border-radius: 5px;
+    margin: 8px;
+}
+
+    .vhImage img {
+        border-radius: 5px;
+    }
+
+.vhProperty, .vhPrice {
+    margin-top: 18px;
+}
+
+.property, .icon, .priceDay {
+    margin-left: 14px;
+    font-family: Calibri;
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+}
+
+.priceDay {
+    width: 90px;
+}
+
+.price {
+    font-family: Calibri;
+    font-size: 16px;
+    color: #000;
+}
+
+.bookingContent {
+    background:#aad5fc;
+    border-radius: 5px;
+    margin-top:40px;
+    border:#2D5A84 3px solid;
+    padding:2px;
+}
+
+.btnBooking {
+    font-family: Calibri;
+    font-size: 20px;
+    width: 180px;
+    height: 50px;
+    border-radius: 5px;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 50px;
+    vertical-align: middle;
+    color: #fff;
+    background-image: linear-gradient(top, #2D5A84 0%, #5f9fd8 100%);
+    background-image: linear-gradient(to bottom, #2D5A84 0%, #5f9fd8 100%);
+}
+
+    .btnBooking:hover {
+        background-image: linear-gradient(top, #5f9fd8 0%, #2D5A84 100%);
+        background-image: linear-gradient(to bottom, #5f9fd8 0%, #2D5A84 100%);
+    }
+
+.clear {
+    clear: both;
+    height: 17px;
+}
+
+.clear2 {
+    clear: both;
+    height: 6px;
+}

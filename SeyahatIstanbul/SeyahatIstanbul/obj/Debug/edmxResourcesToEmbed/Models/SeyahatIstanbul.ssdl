@@ -1,0 +1,1067 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SeyahatIstanbulModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="sqAccountId" />
+    </Key>
+    <Property Name="sqAccountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chAccountName" Type="nvarchar" MaxLength="50" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AccountAddress">
+    <Key>
+      <PropertyRef Name="sqAccountAddressId" />
+    </Key>
+    <Property Name="sqAccountAddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rfAccountId" Type="int" />
+    <Property Name="rfAddressTypeId" Type="tinyint" />
+    <Property Name="rfCountyId" Type="smallint" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="250" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AccountCustomer">
+    <Key>
+      <PropertyRef Name="sqAccountCustomerId" />
+    </Key>
+    <Property Name="sqAccountCustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rfAccountId" Type="int" />
+    <Property Name="rfCustomerId" Type="int" />
+    <Property Name="chPosition" Type="nvarchar" MaxLength="50" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="sqAddressId" />
+    </Key>
+    <Property Name="sqAddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rfAddressTypeId" Type="tinyint" />
+    <Property Name="rfCountyId" Type="smallint" />
+    <Property Name="chValue" Type="nvarchar(max)" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AddressType">
+    <Key>
+      <PropertyRef Name="sqAddressTypeId" />
+    </Key>
+    <Property Name="sqAddressTypeId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="sqBrandId" />
+    </Key>
+    <Property Name="sqBrandId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="150" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="sqCategoryId" />
+    </Key>
+    <Property Name="sqCategoryId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="150" />
+    <Property Name="rfParentCategoryId" Type="smallint" />
+    <Property Name="rfCategoryTypeId" Type="smallint" />
+    <Property Name="dgTimeOut" Type="tinyint" />
+    <Property Name="chUrl" Type="nvarchar" MaxLength="500" />
+    <Property Name="chGuid" Type="nvarchar" MaxLength="150" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CategoryType">
+    <Key>
+      <PropertyRef Name="sqCategoryTypeId" />
+    </Key>
+    <Property Name="sqCategoryTypeId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="150" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="sqCityId" />
+    </Key>
+    <Property Name="sqCityId" Type="tinyint" Nullable="false" />
+    <Property Name="chCityName" Type="nvarchar" MaxLength="50" />
+    <Property Name="blStatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="CommonSettings">
+    <Key>
+      <PropertyRef Name="sqCommonSettingsId" />
+    </Key>
+    <Property Name="sqCommonSettingsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chKey" Type="nvarchar" MaxLength="500" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="500" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="50" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CommunicationType">
+    <Key>
+      <PropertyRef Name="sqCommunicationTypeId" />
+    </Key>
+    <Property Name="sqCommunicationTypeId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="County">
+    <Key>
+      <PropertyRef Name="sqCountyId" />
+    </Key>
+    <Property Name="sqCountyId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rfCityId" Type="tinyint" />
+    <Property Name="chCountyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="blStatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="sqCustomerId" />
+    </Key>
+    <Property Name="sqCustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chName" Type="nvarchar" MaxLength="50" />
+    <Property Name="chSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="dtBirthDate" Type="date" />
+    <Property Name="chTc" Type="nvarchar" MaxLength="11" />
+    <Property Name="rfSexId" Type="tinyint" />
+    <Property Name="rfCustomerTypeId" Type="tinyint" />
+    <Property Name="chEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="chPassword" Type="nvarchar(max)" />
+    <Property Name="blPasswordExchange" Type="bit" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CustomerAddress">
+    <Key>
+      <PropertyRef Name="sqCustomerAddressId" />
+    </Key>
+    <Property Name="sqCustomerAddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rfCustomerId" Type="int" />
+    <Property Name="rfAddressTypeId" Type="tinyint" />
+    <Property Name="rfCountyId" Type="smallint" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="250" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CustomerCommunication">
+    <Key>
+      <PropertyRef Name="sqCustomerCommunicationId" />
+    </Key>
+    <Property Name="sqCustomerCommunicationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rfCustomerId" Type="int" />
+    <Property Name="rfCommunicationTypeId" Type="tinyint" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CustomerType">
+    <Key>
+      <PropertyRef Name="sqCustomerTypeId" />
+    </Key>
+    <Property Name="sqCustomerTypeId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="sqErrorLogId" />
+    </Key>
+    <Property Name="sqErrorLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rfPageId" Type="int" />
+    <Property Name="dgErrorCode" Type="int" />
+    <Property Name="chPageName" Type="nvarchar" MaxLength="250" />
+    <Property Name="chPageUrl" Type="nvarchar" MaxLength="250" />
+    <Property Name="chIpAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="chError" Type="nvarchar" MaxLength="500" />
+    <Property Name="chDesc" Type="nvarchar" MaxLength="2000" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="50" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FuelType">
+    <Key>
+      <PropertyRef Name="sqFuelTypeId" />
+    </Key>
+    <Property Name="sqFuelTypeId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="150" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GearType">
+    <Key>
+      <PropertyRef Name="sqGearTypeId" />
+    </Key>
+    <Property Name="sqGearTypeId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="150" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Images">
+    <Key>
+      <PropertyRef Name="SqImageId" />
+    </Key>
+    <Property Name="SqImageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rfCategory" Type="smallint" />
+    <Property Name="rfDestination" Type="int" />
+    <Property Name="chImageName" Type="nvarchar" MaxLength="150" />
+    <Property Name="chRoute" Type="nvarchar(max)" />
+    <Property Name="chUrl" Type="nvarchar(max)" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LogTable">
+    <Key>
+      <PropertyRef Name="sqlogId" />
+    </Key>
+    <Property Name="sqlogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rfCategoryId" Type="smallint" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="500" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Model">
+    <Key>
+      <PropertyRef Name="sqModelId" />
+    </Key>
+    <Property Name="sqModelId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rfBrandId" Type="tinyint" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="150" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="permissionId" />
+    </Key>
+    <Property Name="permissionId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="chDesc" Type="nvarchar" MaxLength="250" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Price">
+    <Key>
+      <PropertyRef Name="sqPriceId" />
+    </Key>
+    <Property Name="sqPriceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rfCategoryId" Type="smallint" />
+    <Property Name="rfProductId" Type="int" />
+    <Property Name="dgDay" Type="int" />
+    <Property Name="dgValue" Type="int" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Process">
+    <Key>
+      <PropertyRef Name="sqProcessId" />
+    </Key>
+    <Property Name="sqProcessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rfCategoryId" Type="smallint" />
+    <Property Name="rfProductId" Type="int" />
+    <Property Name="rfCustomerId" Type="int" />
+    <Property Name="dgPrice" Type="int" />
+    <Property Name="dtStartDate" Type="datetime" />
+    <Property Name="dtEndDate" Type="datetime" />
+    <Property Name="rfDeliveryPlace_1" Type="int" />
+    <Property Name="rfDeliveryPlace_2" Type="int" />
+    <Property Name="rfStatusId" Type="int" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProcessStatus">
+    <Key>
+      <PropertyRef Name="sqProcessStatusId" />
+    </Key>
+    <Property Name="sqProcessStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="500" />
+    <Property Name="chDesc" Type="nvarchar" MaxLength="2000" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="50" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RentApart">
+    <Key>
+      <PropertyRef Name="sqRentApartId" />
+    </Key>
+    <Property Name="sqRentApartId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rfCountyId" Type="smallint" />
+    <Property Name="chAddress" Type="nvarchar(max)" />
+    <Property Name="dgRoomSize" Type="tinyint" />
+    <Property Name="chProperties" Type="nvarchar(max)" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+    <Property Name="blDisplaySlider" Type="bit" />
+    <Property Name="chImageName" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="RentVehicle">
+    <Key>
+      <PropertyRef Name="sqVehicleId" />
+    </Key>
+    <Property Name="sqVehicleId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rfVehicleTypeId" Type="tinyint" />
+    <Property Name="chPlate" Type="nvarchar" MaxLength="10" />
+    <Property Name="chVinNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="chColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="rfFuelTypeId" Type="tinyint" />
+    <Property Name="rfModelId" Type="smallint" />
+    <Property Name="rfGearTypeId" Type="tinyint" />
+    <Property Name="blDisplayHomePage" Type="bit" />
+    <Property Name="qtOrderDisplay" Type="tinyint" />
+    <Property Name="rfVehicleOwner" Type="int" />
+    <Property Name="blDisplaySlider" Type="bit" />
+    <Property Name="chImageName" Type="nvarchar" MaxLength="150" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="150" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+    <Property Name="chModelYear" Type="char" MaxLength="4" />
+    <Property Name="qtCapacity" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="roleId" />
+    </Key>
+    <Property Name="roleId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="chDesc" Type="nvarchar" MaxLength="250" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RolePermission">
+    <Key>
+      <PropertyRef Name="rfRoleId" />
+      <PropertyRef Name="rfPermissionId" />
+    </Key>
+    <Property Name="rfRoleId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="rfPermissionId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="chDesc" Type="nvarchar" MaxLength="250" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Sex">
+    <Key>
+      <PropertyRef Name="sqSexId" />
+    </Key>
+    <Property Name="sqSexId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="20" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tour">
+    <Key>
+      <PropertyRef Name="sqTourId" />
+    </Key>
+    <Property Name="sqTourId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rfTourTypeId" Type="tinyint" />
+    <Property Name="chPlaces" Type="nvarchar(max)" />
+    <Property Name="chProperties" Type="nvarchar(max)" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+    <Property Name="blDisplaySlider" Type="bit" />
+    <Property Name="chImageName" Type="nvarchar" MaxLength="150" />
+    <Property Name="chStartPlace" Type="nvarchar" MaxLength="100" />
+    <Property Name="chEndPlace" Type="nvarchar" MaxLength="100" />
+    <Property Name="chPersonCount" Type="int" />
+  </EntityType>
+  <EntityType Name="TourType">
+    <Key>
+      <PropertyRef Name="sqTourTypeId" />
+    </Key>
+    <Property Name="sqTourTypeId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="250" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="sqUserId" />
+    </Key>
+    <Property Name="sqUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="chName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="chSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="dtBirthDate" Type="date" Nullable="false" />
+    <Property Name="rfUserTypeId" Type="int" Nullable="false" />
+    <Property Name="chEmail" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="chPassword" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="blPasswordExchange" Type="bit" Nullable="false" />
+    <Property Name="chDesc" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="blStatus" Type="bit" Nullable="false" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="rfUserName" />
+      <PropertyRef Name="rfRoleId" />
+    </Key>
+    <Property Name="rfUserName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="rfRoleId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="chDesc" Type="nvarchar" MaxLength="250" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="sqUserTypeId" />
+    </Key>
+    <Property Name="sqUserTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="chDesc" Type="nvarchar" MaxLength="250" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="VehicleType">
+    <Key>
+      <PropertyRef Name="sqVehicleTypeId" />
+    </Key>
+    <Property Name="sqVehicleTypeId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chValue" Type="nvarchar" MaxLength="150" />
+    <Property Name="chDesc" Type="nvarchar(max)" />
+    <Property Name="blStatus" Type="bit" />
+    <Property Name="cdCreator" Type="nvarchar" MaxLength="20" />
+    <Property Name="dtCreated" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_Images_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Images" Type="Self.Images" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="sqCategoryId" />
+      </Principal>
+      <Dependent Role="Images">
+        <PropertyRef Name="rfCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkAccountAddressAAddressTypeId">
+    <End Role="AddressType" Type="Self.AddressType" Multiplicity="0..1" />
+    <End Role="AccountAddress" Type="Self.AccountAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AddressType">
+        <PropertyRef Name="sqAddressTypeId" />
+      </Principal>
+      <Dependent Role="AccountAddress">
+        <PropertyRef Name="rfAddressTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkAccountAddressAccountId">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="AccountAddress" Type="Self.AccountAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="sqAccountId" />
+      </Principal>
+      <Dependent Role="AccountAddress">
+        <PropertyRef Name="rfAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkAccountAddressCountyId">
+    <End Role="County" Type="Self.County" Multiplicity="0..1" />
+    <End Role="AccountAddress" Type="Self.AccountAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="County">
+        <PropertyRef Name="sqCountyId" />
+      </Principal>
+      <Dependent Role="AccountAddress">
+        <PropertyRef Name="rfCountyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkAccountCustomerAccountId">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="AccountCustomer" Type="Self.AccountCustomer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="sqAccountId" />
+      </Principal>
+      <Dependent Role="AccountCustomer">
+        <PropertyRef Name="rfAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkAccountCustomerCustomerId">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="AccountCustomer" Type="Self.AccountCustomer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="sqCustomerId" />
+      </Principal>
+      <Dependent Role="AccountCustomer">
+        <PropertyRef Name="rfCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkAddressCountyId">
+    <End Role="County" Type="Self.County" Multiplicity="0..1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="County">
+        <PropertyRef Name="sqCountyId" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="rfCountyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkCategoryCategoryTypeId">
+    <End Role="CategoryType" Type="Self.CategoryType" Multiplicity="0..1" />
+    <End Role="Category" Type="Self.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryType">
+        <PropertyRef Name="sqCategoryTypeId" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="rfCategoryTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkCountyCityId">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="County" Type="Self.County" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="sqCityId" />
+      </Principal>
+      <Dependent Role="County">
+        <PropertyRef Name="rfCityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkCustomerAddressAddressTypeId">
+    <End Role="AddressType" Type="Self.AddressType" Multiplicity="0..1" />
+    <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AddressType">
+        <PropertyRef Name="sqAddressTypeId" />
+      </Principal>
+      <Dependent Role="CustomerAddress">
+        <PropertyRef Name="rfAddressTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkCustomerAddressCountyId">
+    <End Role="County" Type="Self.County" Multiplicity="0..1" />
+    <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="County">
+        <PropertyRef Name="sqCountyId" />
+      </Principal>
+      <Dependent Role="CustomerAddress">
+        <PropertyRef Name="rfCountyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkCustomerAddressCustomerId">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="sqCustomerId" />
+      </Principal>
+      <Dependent Role="CustomerAddress">
+        <PropertyRef Name="rfCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkCustomerCommunicationCommunicationTypeId">
+    <End Role="CommunicationType" Type="Self.CommunicationType" Multiplicity="0..1" />
+    <End Role="CustomerCommunication" Type="Self.CustomerCommunication" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CommunicationType">
+        <PropertyRef Name="sqCommunicationTypeId" />
+      </Principal>
+      <Dependent Role="CustomerCommunication">
+        <PropertyRef Name="rfCommunicationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkCustomerCommunicationCustomerId">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="CustomerCommunication" Type="Self.CustomerCommunication" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="sqCustomerId" />
+      </Principal>
+      <Dependent Role="CustomerCommunication">
+        <PropertyRef Name="rfCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkCustomerCustomerTypeId">
+    <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerType">
+        <PropertyRef Name="sqCustomerTypeId" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="rfCustomerTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkCustomerSexId">
+    <End Role="Sex" Type="Self.Sex" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sex">
+        <PropertyRef Name="sqSexId" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="rfSexId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkLogTableCategoryId">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="LogTable" Type="Self.LogTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="sqCategoryId" />
+      </Principal>
+      <Dependent Role="LogTable">
+        <PropertyRef Name="rfCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkModelBrandId">
+    <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
+    <End Role="Model" Type="Self.Model" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="sqBrandId" />
+      </Principal>
+      <Dependent Role="Model">
+        <PropertyRef Name="rfBrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkPriceCategoryId">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Price" Type="Self.Price" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="sqCategoryId" />
+      </Principal>
+      <Dependent Role="Price">
+        <PropertyRef Name="rfCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkProcessCategoryId">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Process" Type="Self.Process" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="sqCategoryId" />
+      </Principal>
+      <Dependent Role="Process">
+        <PropertyRef Name="rfCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkProcessCustomerId">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Process" Type="Self.Process" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="sqCustomerId" />
+      </Principal>
+      <Dependent Role="Process">
+        <PropertyRef Name="rfCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkProcessProcessStatusRfProcessStatusId">
+    <End Role="ProcessStatus" Type="Self.ProcessStatus" Multiplicity="0..1" />
+    <End Role="Process" Type="Self.Process" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProcessStatus">
+        <PropertyRef Name="sqProcessStatusId" />
+      </Principal>
+      <Dependent Role="Process">
+        <PropertyRef Name="rfStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkRentApartCountyId">
+    <End Role="County" Type="Self.County" Multiplicity="0..1" />
+    <End Role="RentApart" Type="Self.RentApart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="County">
+        <PropertyRef Name="sqCountyId" />
+      </Principal>
+      <Dependent Role="RentApart">
+        <PropertyRef Name="rfCountyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkRentVehicleFuelTypeIdId">
+    <End Role="FuelType" Type="Self.FuelType" Multiplicity="0..1" />
+    <End Role="RentVehicle" Type="Self.RentVehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FuelType">
+        <PropertyRef Name="sqFuelTypeId" />
+      </Principal>
+      <Dependent Role="RentVehicle">
+        <PropertyRef Name="rfFuelTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkRentVehicleGearTypeId">
+    <End Role="GearType" Type="Self.GearType" Multiplicity="0..1" />
+    <End Role="RentVehicle" Type="Self.RentVehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GearType">
+        <PropertyRef Name="sqGearTypeId" />
+      </Principal>
+      <Dependent Role="RentVehicle">
+        <PropertyRef Name="rfGearTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkRentVehicleModelId">
+    <End Role="Model" Type="Self.Model" Multiplicity="0..1" />
+    <End Role="RentVehicle" Type="Self.RentVehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Model">
+        <PropertyRef Name="sqModelId" />
+      </Principal>
+      <Dependent Role="RentVehicle">
+        <PropertyRef Name="rfModelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkRentVehicleVehicleTypeIdId">
+    <End Role="VehicleType" Type="Self.VehicleType" Multiplicity="0..1" />
+    <End Role="RentVehicle" Type="Self.RentVehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleType">
+        <PropertyRef Name="sqVehicleTypeId" />
+      </Principal>
+      <Dependent Role="RentVehicle">
+        <PropertyRef Name="rfVehicleTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkRolePermissionPermissionRfPermission">
+    <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+    <End Role="RolePermission" Type="Self.RolePermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permission">
+        <PropertyRef Name="permissionId" />
+      </Principal>
+      <Dependent Role="RolePermission">
+        <PropertyRef Name="rfPermissionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkRolePermissionRoleRfRoleId">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="RolePermission" Type="Self.RolePermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="roleId" />
+      </Principal>
+      <Dependent Role="RolePermission">
+        <PropertyRef Name="rfRoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkTourTourTypeId">
+    <End Role="TourType" Type="Self.TourType" Multiplicity="0..1" />
+    <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TourType">
+        <PropertyRef Name="sqTourTypeId" />
+      </Principal>
+      <Dependent Role="Tour">
+        <PropertyRef Name="rfTourTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkUserRoleRoleRfRoleId">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="roleId" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="rfRoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'fkUserRoleUserRfUserName' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="fkUserRoleUserRfUserName" />-->
+  <Association Name="fkUserUserTypeRfUserTypeId">
+    <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="sqUserTypeId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="rfUserTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkVehicleOwnerUserId">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="RentVehicle" Type="Self.RentVehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="sqUserId" />
+      </Principal>
+      <Dependent Role="RentVehicle">
+        <PropertyRef Name="rfVehicleOwner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SeyahatIstanbulModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AccountAddress" EntityType="Self.AccountAddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AccountCustomer" EntityType="Self.AccountCustomer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AddressType" EntityType="Self.AddressType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CategoryType" EntityType="Self.CategoryType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CommonSettings" EntityType="Self.CommonSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CommunicationType" EntityType="Self.CommunicationType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="County" EntityType="Self.County" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerAddress" EntityType="Self.CustomerAddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerCommunication" EntityType="Self.CustomerCommunication" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerType" EntityType="Self.CustomerType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FuelType" EntityType="Self.FuelType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GearType" EntityType="Self.GearType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogTable" EntityType="Self.LogTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Price" EntityType="Self.Price" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Process" EntityType="Self.Process" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProcessStatus" EntityType="Self.ProcessStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RentApart" EntityType="Self.RentApart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RentVehicle" EntityType="Self.RentVehicle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RolePermission" EntityType="Self.RolePermission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sex" EntityType="Self.Sex" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tour" EntityType="Self.Tour" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TourType" EntityType="Self.TourType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VehicleType" EntityType="Self.VehicleType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Images_Category" Association="Self.FK_Images_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Images" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="fkAccountAddressAAddressTypeId" Association="Self.fkAccountAddressAAddressTypeId">
+      <End Role="AddressType" EntitySet="AddressType" />
+      <End Role="AccountAddress" EntitySet="AccountAddress" />
+    </AssociationSet>
+    <AssociationSet Name="fkAccountAddressAccountId" Association="Self.fkAccountAddressAccountId">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="AccountAddress" EntitySet="AccountAddress" />
+    </AssociationSet>
+    <AssociationSet Name="fkAccountAddressCountyId" Association="Self.fkAccountAddressCountyId">
+      <End Role="County" EntitySet="County" />
+      <End Role="AccountAddress" EntitySet="AccountAddress" />
+    </AssociationSet>
+    <AssociationSet Name="fkAccountCustomerAccountId" Association="Self.fkAccountCustomerAccountId">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="AccountCustomer" EntitySet="AccountCustomer" />
+    </AssociationSet>
+    <AssociationSet Name="fkAccountCustomerCustomerId" Association="Self.fkAccountCustomerCustomerId">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="AccountCustomer" EntitySet="AccountCustomer" />
+    </AssociationSet>
+    <AssociationSet Name="fkAddressCountyId" Association="Self.fkAddressCountyId">
+      <End Role="County" EntitySet="County" />
+      <End Role="Address" EntitySet="Address" />
+    </AssociationSet>
+    <AssociationSet Name="fkCategoryCategoryTypeId" Association="Self.fkCategoryCategoryTypeId">
+      <End Role="CategoryType" EntitySet="CategoryType" />
+      <End Role="Category" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="fkCountyCityId" Association="Self.fkCountyCityId">
+      <End Role="City" EntitySet="City" />
+      <End Role="County" EntitySet="County" />
+    </AssociationSet>
+    <AssociationSet Name="fkCustomerAddressAddressTypeId" Association="Self.fkCustomerAddressAddressTypeId">
+      <End Role="AddressType" EntitySet="AddressType" />
+      <End Role="CustomerAddress" EntitySet="CustomerAddress" />
+    </AssociationSet>
+    <AssociationSet Name="fkCustomerAddressCountyId" Association="Self.fkCustomerAddressCountyId">
+      <End Role="County" EntitySet="County" />
+      <End Role="CustomerAddress" EntitySet="CustomerAddress" />
+    </AssociationSet>
+    <AssociationSet Name="fkCustomerAddressCustomerId" Association="Self.fkCustomerAddressCustomerId">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="CustomerAddress" EntitySet="CustomerAddress" />
+    </AssociationSet>
+    <AssociationSet Name="fkCustomerCommunicationCommunicationTypeId" Association="Self.fkCustomerCommunicationCommunicationTypeId">
+      <End Role="CommunicationType" EntitySet="CommunicationType" />
+      <End Role="CustomerCommunication" EntitySet="CustomerCommunication" />
+    </AssociationSet>
+    <AssociationSet Name="fkCustomerCommunicationCustomerId" Association="Self.fkCustomerCommunicationCustomerId">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="CustomerCommunication" EntitySet="CustomerCommunication" />
+    </AssociationSet>
+    <AssociationSet Name="fkCustomerCustomerTypeId" Association="Self.fkCustomerCustomerTypeId">
+      <End Role="CustomerType" EntitySet="CustomerType" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="fkCustomerSexId" Association="Self.fkCustomerSexId">
+      <End Role="Sex" EntitySet="Sex" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="fkLogTableCategoryId" Association="Self.fkLogTableCategoryId">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="LogTable" EntitySet="LogTable" />
+    </AssociationSet>
+    <AssociationSet Name="fkModelBrandId" Association="Self.fkModelBrandId">
+      <End Role="Brand" EntitySet="Brand" />
+      <End Role="Model" EntitySet="Model" />
+    </AssociationSet>
+    <AssociationSet Name="fkPriceCategoryId" Association="Self.fkPriceCategoryId">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Price" EntitySet="Price" />
+    </AssociationSet>
+    <AssociationSet Name="fkProcessCategoryId" Association="Self.fkProcessCategoryId">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Process" EntitySet="Process" />
+    </AssociationSet>
+    <AssociationSet Name="fkProcessCustomerId" Association="Self.fkProcessCustomerId">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Process" EntitySet="Process" />
+    </AssociationSet>
+    <AssociationSet Name="fkProcessProcessStatusRfProcessStatusId" Association="Self.fkProcessProcessStatusRfProcessStatusId">
+      <End Role="ProcessStatus" EntitySet="ProcessStatus" />
+      <End Role="Process" EntitySet="Process" />
+    </AssociationSet>
+    <AssociationSet Name="fkRentApartCountyId" Association="Self.fkRentApartCountyId">
+      <End Role="County" EntitySet="County" />
+      <End Role="RentApart" EntitySet="RentApart" />
+    </AssociationSet>
+    <AssociationSet Name="fkRentVehicleFuelTypeIdId" Association="Self.fkRentVehicleFuelTypeIdId">
+      <End Role="FuelType" EntitySet="FuelType" />
+      <End Role="RentVehicle" EntitySet="RentVehicle" />
+    </AssociationSet>
+    <AssociationSet Name="fkRentVehicleGearTypeId" Association="Self.fkRentVehicleGearTypeId">
+      <End Role="GearType" EntitySet="GearType" />
+      <End Role="RentVehicle" EntitySet="RentVehicle" />
+    </AssociationSet>
+    <AssociationSet Name="fkRentVehicleModelId" Association="Self.fkRentVehicleModelId">
+      <End Role="Model" EntitySet="Model" />
+      <End Role="RentVehicle" EntitySet="RentVehicle" />
+    </AssociationSet>
+    <AssociationSet Name="fkRentVehicleVehicleTypeIdId" Association="Self.fkRentVehicleVehicleTypeIdId">
+      <End Role="VehicleType" EntitySet="VehicleType" />
+      <End Role="RentVehicle" EntitySet="RentVehicle" />
+    </AssociationSet>
+    <AssociationSet Name="fkRolePermissionPermissionRfPermission" Association="Self.fkRolePermissionPermissionRfPermission">
+      <End Role="Permission" EntitySet="Permission" />
+      <End Role="RolePermission" EntitySet="RolePermission" />
+    </AssociationSet>
+    <AssociationSet Name="fkRolePermissionRoleRfRoleId" Association="Self.fkRolePermissionRoleRfRoleId">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="RolePermission" EntitySet="RolePermission" />
+    </AssociationSet>
+    <AssociationSet Name="fkTourTourTypeId" Association="Self.fkTourTourTypeId">
+      <End Role="TourType" EntitySet="TourType" />
+      <End Role="Tour" EntitySet="Tour" />
+    </AssociationSet>
+    <AssociationSet Name="fkUserRoleRoleRfRoleId" Association="Self.fkUserRoleRoleRfRoleId">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="fkUserUserTypeRfUserTypeId" Association="Self.fkUserUserTypeRfUserTypeId">
+      <End Role="UserType" EntitySet="UserType" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="fkVehicleOwnerUserId" Association="Self.fkVehicleOwnerUserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="RentVehicle" EntitySet="RentVehicle" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

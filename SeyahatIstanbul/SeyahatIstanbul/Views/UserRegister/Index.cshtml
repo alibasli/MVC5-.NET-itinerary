@@ -1,0 +1,150 @@
+﻿@model SeyahatIstanbul.Models.Customer
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <script src="~/Content/Jquery/js/jquery-1.10.2.js"></script>
+    <script src="~/Content/Jquery/js/jquery-ui-1.10.4.custom.min.js"></script>
+
+    <link href="~/Content/Bootstrap/css/bootstrap-thememin.css" rel="stylesheet" />
+    <link href="~/Content/Bootstrap/css/bootstrapmin.css" rel="stylesheet" />
+    <link href="~/Content/Jquery/css/start/jquery-ui-1.10.4.custom_min.css" rel="stylesheet" />
+
+    <link href="~/Content/LoginRegister.css" rel="stylesheet" />
+
+    <style>
+        .txt {
+            height: 34px;
+            font-size: 18px;
+            width: 290px;
+        }
+
+        #frmUser {
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            width: 100%;
+        }
+
+        #chName {
+            width: 125px;
+        }
+
+        #chSurname {
+            width: 125px;
+        }
+
+        .error {
+            background: #d04149;
+        }
+        /*#bodyContainer {
+            padding-left: 100px;
+        }*/
+    </style>
+    <script>
+        function save() {
+
+            var form = $('#frmUser');
+            $.ajax({
+                url: '@Url.Action("Register", "UserRegister")',
+                type: 'POST',
+                data: form.serialize(),
+                success: function (data) {
+                    alert(data);
+                },
+                error: function () {
+                    alert("İstenmeyen bir hata oluştu lütfen tekrar deneyiniz");
+                }
+            });
+
+        }
+    </script>
+
+
+</head>
+<body>
+    <div id="container">
+        <header>
+            Kullanıcı Girişi
+        </header>
+        <div class="dvClear"></div>
+        <div id="bodyContainer">
+            <section>
+                <form id="frmUser">
+                    <div>
+                        <div class="left" style=" margin-right:22px;">
+                            <div class="control-group">
+                                @Html.LabelFor(d => d.chName, new { @class = "control-label" })
+                                <div class="controls clear">
+                                    @Html.TextBoxFor(d => d.chName, new { @class = "txt required" })
+                                    @Html.ValidationMessageFor(d => d.chName)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="left">
+                            <div class="control-group">
+                                @Html.LabelFor(d => d.chSurname, new { @class = "control-label" })
+                                <div class="controls clear">
+                                    @Html.TextBoxFor(d => d.chSurname, new { @class = "txt" })
+                                    @Html.ValidationMessageFor(d => d.chSurname)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="control-group">
+                        @Html.LabelFor(d => d.dtBirthDate, new { @class = "control-label" })
+                        <div class="controls clear">
+                            @Html.TextBoxFor(d => d.dtBirthDate, new { @class = "txt datepicker" })
+                            @Html.ValidationMessageFor(d => d.chEmail)
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="control-group">
+                        @Html.LabelFor(d => d.chEmail, new { @class = "control-label" })
+                        <div class="controls clear">
+                            @Html.TextBoxFor(d => d.chEmail, new { @class = "txt" })
+                            @Html.ValidationMessageFor(d => d.chEmail)
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="control-group">
+                        @Html.LabelFor(d => d.chPassword, new { @class = "control-label" })
+                        <div class="controls clear">
+                            @Html.PasswordFor(d => d.chPassword, new { @class = "txt" })
+                            @Html.ValidationMessageFor(d => d.chPassword)
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="control-group">
+                        @Html.LabelFor(d => d.chDesc, new { @class = "control-label" })
+                        <div class="controls clear">
+                            @Html.PasswordFor(d => d.chDesc, new { @class = "txt" })
+                            @Html.ValidationMessageFor(d => d.chDesc)
+                        </div>
+                    </div>
+                    <div class="control-group btn_group">
+                        <div class="controls">
+                            <div id="btnSave" class="btn  btn-info" onclick="save()">Kaydet</div>
+                            @*<div id="btnSave" class="btn btn-large btn-block btn-primary" onclick="save()">Giriş</div>*@
+                            @*<a></a>
+                                <asp:Button ID="btnKaydet" Width="80px" runat="server" class="btn btn-success" Text="Kaydet" OnClick="btnKaydet_Click" />
+                                <a></a>
+                                <asp:Button ID="btnTemizle" Width="80px" runat="server" class="btn btn-warning" Text="Temizle" />*@
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+        <footer></footer>
+    </div>
+</body>
+</html>  

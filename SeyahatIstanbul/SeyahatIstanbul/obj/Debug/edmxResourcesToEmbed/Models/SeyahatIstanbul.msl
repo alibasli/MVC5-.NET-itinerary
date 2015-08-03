@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SeyahatIstanbulModelStoreContainer" CdmEntityContainer="SeyahatIstanbulEntities">
+    <EntitySetMapping Name="Account">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="sqAccountId" ColumnName="sqAccountId" />
+          <ScalarProperty Name="chAccountName" ColumnName="chAccountName" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountAddress">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.AccountAddress">
+        <MappingFragment StoreEntitySet="AccountAddress">
+          <ScalarProperty Name="sqAccountAddressId" ColumnName="sqAccountAddressId" />
+          <ScalarProperty Name="rfAccountId" ColumnName="rfAccountId" />
+          <ScalarProperty Name="rfAddressTypeId" ColumnName="rfAddressTypeId" />
+          <ScalarProperty Name="rfCountyId" ColumnName="rfCountyId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountCustomer">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.AccountCustomer">
+        <MappingFragment StoreEntitySet="AccountCustomer">
+          <ScalarProperty Name="sqAccountCustomerId" ColumnName="sqAccountCustomerId" />
+          <ScalarProperty Name="rfAccountId" ColumnName="rfAccountId" />
+          <ScalarProperty Name="rfCustomerId" ColumnName="rfCustomerId" />
+          <ScalarProperty Name="chPosition" ColumnName="chPosition" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Address">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="sqAddressId" ColumnName="sqAddressId" />
+          <ScalarProperty Name="rfAddressTypeId" ColumnName="rfAddressTypeId" />
+          <ScalarProperty Name="rfCountyId" ColumnName="rfCountyId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AddressType">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.AddressType">
+        <MappingFragment StoreEntitySet="AddressType">
+          <ScalarProperty Name="sqAddressTypeId" ColumnName="sqAddressTypeId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brand">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.Brand">
+        <MappingFragment StoreEntitySet="Brand">
+          <ScalarProperty Name="sqBrandId" ColumnName="sqBrandId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="chGuid" ColumnName="chGuid" />
+          <ScalarProperty Name="chUrl" ColumnName="chUrl" />
+          <ScalarProperty Name="sqCategoryId" ColumnName="sqCategoryId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="rfParentCategoryId" ColumnName="rfParentCategoryId" />
+          <ScalarProperty Name="rfCategoryTypeId" ColumnName="rfCategoryTypeId" />
+          <ScalarProperty Name="dgTimeOut" ColumnName="dgTimeOut" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryType">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.CategoryType">
+        <MappingFragment StoreEntitySet="CategoryType">
+          <ScalarProperty Name="sqCategoryTypeId" ColumnName="sqCategoryTypeId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="sqCityId" ColumnName="sqCityId" />
+          <ScalarProperty Name="chCityName" ColumnName="chCityName" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommunicationType">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.CommunicationType">
+        <MappingFragment StoreEntitySet="CommunicationType">
+          <ScalarProperty Name="sqCommunicationTypeId" ColumnName="sqCommunicationTypeId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="County">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.County">
+        <MappingFragment StoreEntitySet="County">
+          <ScalarProperty Name="sqCountyId" ColumnName="sqCountyId" />
+          <ScalarProperty Name="rfCityId" ColumnName="rfCityId" />
+          <ScalarProperty Name="chCountyName" ColumnName="chCountyName" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customer">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="sqCustomerId" ColumnName="sqCustomerId" />
+          <ScalarProperty Name="chName" ColumnName="chName" />
+          <ScalarProperty Name="chSurname" ColumnName="chSurname" />
+          <ScalarProperty Name="dtBirthDate" ColumnName="dtBirthDate" />
+          <ScalarProperty Name="chTc" ColumnName="chTc" />
+          <ScalarProperty Name="rfSexId" ColumnName="rfSexId" />
+          <ScalarProperty Name="rfCustomerTypeId" ColumnName="rfCustomerTypeId" />
+          <ScalarProperty Name="chEmail" ColumnName="chEmail" />
+          <ScalarProperty Name="chPassword" ColumnName="chPassword" />
+          <ScalarProperty Name="blPasswordExchange" ColumnName="blPasswordExchange" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerAddress">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.CustomerAddress">
+        <MappingFragment StoreEntitySet="CustomerAddress">
+          <ScalarProperty Name="sqCustomerAddressId" ColumnName="sqCustomerAddressId" />
+          <ScalarProperty Name="rfCustomerId" ColumnName="rfCustomerId" />
+          <ScalarProperty Name="rfAddressTypeId" ColumnName="rfAddressTypeId" />
+          <ScalarProperty Name="rfCountyId" ColumnName="rfCountyId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerCommunication">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.CustomerCommunication">
+        <MappingFragment StoreEntitySet="CustomerCommunication">
+          <ScalarProperty Name="sqCustomerCommunicationId" ColumnName="sqCustomerCommunicationId" />
+          <ScalarProperty Name="rfCustomerId" ColumnName="rfCustomerId" />
+          <ScalarProperty Name="rfCommunicationTypeId" ColumnName="rfCommunicationTypeId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerType">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.CustomerType">
+        <MappingFragment StoreEntitySet="CustomerType">
+          <ScalarProperty Name="sqCustomerTypeId" ColumnName="sqCustomerTypeId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ErrorLog">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.ErrorLog">
+        <MappingFragment StoreEntitySet="ErrorLog">
+          <ScalarProperty Name="chIpAddress" ColumnName="chIpAddress" />
+          <ScalarProperty Name="sqErrorLogId" ColumnName="sqErrorLogId" />
+          <ScalarProperty Name="rfPageId" ColumnName="rfPageId" />
+          <ScalarProperty Name="dgErrorCode" ColumnName="dgErrorCode" />
+          <ScalarProperty Name="chPageName" ColumnName="chPageName" />
+          <ScalarProperty Name="chPageUrl" ColumnName="chPageUrl" />
+          <ScalarProperty Name="chError" ColumnName="chError" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FuelType">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.FuelType">
+        <MappingFragment StoreEntitySet="FuelType">
+          <ScalarProperty Name="sqFuelTypeId" ColumnName="sqFuelTypeId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GearType">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.GearType">
+        <MappingFragment StoreEntitySet="GearType">
+          <ScalarProperty Name="sqGearTypeId" ColumnName="sqGearTypeId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Model">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.Model">
+        <MappingFragment StoreEntitySet="Model">
+          <ScalarProperty Name="sqModelId" ColumnName="sqModelId" />
+          <ScalarProperty Name="rfBrandId" ColumnName="rfBrandId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permission">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.Permission">
+        <MappingFragment StoreEntitySet="Permission">
+          <ScalarProperty Name="permissionId" ColumnName="permissionId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Price">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.Price">
+        <MappingFragment StoreEntitySet="Price">
+          <ScalarProperty Name="dgDay" ColumnName="dgDay" />
+          <ScalarProperty Name="sqPriceId" ColumnName="sqPriceId" />
+          <ScalarProperty Name="rfCategoryId" ColumnName="rfCategoryId" />
+          <ScalarProperty Name="rfProductId" ColumnName="rfProductId" />
+          <ScalarProperty Name="dgValue" ColumnName="dgValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Process">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.Process">
+        <MappingFragment StoreEntitySet="Process">
+          <ScalarProperty Name="sqProcessId" ColumnName="sqProcessId" />
+          <ScalarProperty Name="rfCategoryId" ColumnName="rfCategoryId" />
+          <ScalarProperty Name="rfProductId" ColumnName="rfProductId" />
+          <ScalarProperty Name="rfCustomerId" ColumnName="rfCustomerId" />
+          <ScalarProperty Name="dgPrice" ColumnName="dgPrice" />
+          <ScalarProperty Name="dtStartDate" ColumnName="dtStartDate" />
+          <ScalarProperty Name="dtEndDate" ColumnName="dtEndDate" />
+          <ScalarProperty Name="rfDeliveryPlace_1" ColumnName="rfDeliveryPlace_1" />
+          <ScalarProperty Name="rfDeliveryPlace_2" ColumnName="rfDeliveryPlace_2" />
+          <ScalarProperty Name="rfStatusId" ColumnName="rfStatusId" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProcessStatus">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.ProcessStatus">
+        <MappingFragment StoreEntitySet="ProcessStatus">
+          <ScalarProperty Name="sqProcessStatusId" ColumnName="sqProcessStatusId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RentApart">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.RentApart">
+        <MappingFragment StoreEntitySet="RentApart">
+          <ScalarProperty Name="sqRentApartId" ColumnName="sqRentApartId" />
+          <ScalarProperty Name="rfCountyId" ColumnName="rfCountyId" />
+          <ScalarProperty Name="chAddress" ColumnName="chAddress" />
+          <ScalarProperty Name="dgRoomSize" ColumnName="dgRoomSize" />
+          <ScalarProperty Name="chProperties" ColumnName="chProperties" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+          <ScalarProperty Name="blDisplaySlider" ColumnName="blDisplaySlider" />
+          <ScalarProperty Name="chImageName" ColumnName="chImageName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RentVehicle">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.RentVehicle">
+        <MappingFragment StoreEntitySet="RentVehicle">
+          <ScalarProperty Name="sqVehicleId" ColumnName="sqVehicleId" />
+          <ScalarProperty Name="rfVehicleTypeId" ColumnName="rfVehicleTypeId" />
+          <ScalarProperty Name="chPlate" ColumnName="chPlate" />
+          <ScalarProperty Name="chVinNo" ColumnName="chVinNo" />
+          <ScalarProperty Name="chColor" ColumnName="chColor" />
+          <ScalarProperty Name="rfFuelTypeId" ColumnName="rfFuelTypeId" />
+          <ScalarProperty Name="rfModelId" ColumnName="rfModelId" />
+          <ScalarProperty Name="rfGearTypeId" ColumnName="rfGearTypeId" />
+          <ScalarProperty Name="blDisplayHomePage" ColumnName="blDisplayHomePage" />
+          <ScalarProperty Name="qtOrderDisplay" ColumnName="qtOrderDisplay" />
+          <ScalarProperty Name="rfVehicleOwner" ColumnName="rfVehicleOwner" />
+          <ScalarProperty Name="blDisplaySlider" ColumnName="blDisplaySlider" />
+          <ScalarProperty Name="chImageName" ColumnName="chImageName" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+          <ScalarProperty Name="chModelYear" ColumnName="chModelYear" />
+          <ScalarProperty Name="qtCapacity" ColumnName="qtCapacity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="roleId" ColumnName="roleId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolePermission">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.RolePermission">
+        <MappingFragment StoreEntitySet="RolePermission">
+          <ScalarProperty Name="rfRoleId" ColumnName="rfRoleId" />
+          <ScalarProperty Name="rfPermissionId" ColumnName="rfPermissionId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sex">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.Sex">
+        <MappingFragment StoreEntitySet="Sex">
+          <ScalarProperty Name="sqSexId" ColumnName="sqSexId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tour">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.Tour">
+        <MappingFragment StoreEntitySet="Tour">
+          <ScalarProperty Name="sqTourId" ColumnName="sqTourId" />
+          <ScalarProperty Name="rfTourTypeId" ColumnName="rfTourTypeId" />
+          <ScalarProperty Name="chPlaces" ColumnName="chPlaces" />
+          <ScalarProperty Name="chProperties" ColumnName="chProperties" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+          <ScalarProperty Name="blDisplaySlider" ColumnName="blDisplaySlider" />
+          <ScalarProperty Name="chImageName" ColumnName="chImageName" />
+          <ScalarProperty Name="chStartPlace" ColumnName="chStartPlace" />
+          <ScalarProperty Name="chEndPlace" ColumnName="chEndPlace" />
+          <ScalarProperty Name="chPersonCount" ColumnName="chPersonCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TourType">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.TourType">
+        <MappingFragment StoreEntitySet="TourType">
+          <ScalarProperty Name="sqTourTypeId" ColumnName="sqTourTypeId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="sqUserId" ColumnName="sqUserId" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="chName" ColumnName="chName" />
+          <ScalarProperty Name="chSurname" ColumnName="chSurname" />
+          <ScalarProperty Name="dtBirthDate" ColumnName="dtBirthDate" />
+          <ScalarProperty Name="rfUserTypeId" ColumnName="rfUserTypeId" />
+          <ScalarProperty Name="chEmail" ColumnName="chEmail" />
+          <ScalarProperty Name="chPassword" ColumnName="chPassword" />
+          <ScalarProperty Name="blPasswordExchange" ColumnName="blPasswordExchange" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRole">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.UserRole">
+        <MappingFragment StoreEntitySet="UserRole">
+          <ScalarProperty Name="rfUserName" ColumnName="rfUserName" />
+          <ScalarProperty Name="rfRoleId" ColumnName="rfRoleId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserType">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="sqUserTypeId" ColumnName="sqUserTypeId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VehicleType">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.VehicleType">
+        <MappingFragment StoreEntitySet="VehicleType">
+          <ScalarProperty Name="sqVehicleTypeId" ColumnName="sqVehicleTypeId" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.Images">
+        <MappingFragment StoreEntitySet="Images">
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="chUrl" ColumnName="chUrl" />
+          <ScalarProperty Name="chRoute" ColumnName="chRoute" />
+          <ScalarProperty Name="chImageName" ColumnName="chImageName" />
+          <ScalarProperty Name="rfDestination" ColumnName="rfDestination" />
+          <ScalarProperty Name="rfCategory" ColumnName="rfCategory" />
+          <ScalarProperty Name="SqImageId" ColumnName="SqImageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogTable">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.LogTable">
+        <MappingFragment StoreEntitySet="LogTable">
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="chDesc" ColumnName="chDesc" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="rfCategoryId" ColumnName="rfCategoryId" />
+          <ScalarProperty Name="sqlogId" ColumnName="sqlogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommonSettings">
+      <EntityTypeMapping TypeName="SeyahatIstanbulModel.CommonSettings">
+        <MappingFragment StoreEntitySet="CommonSettings">
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+          <ScalarProperty Name="cdCreator" ColumnName="cdCreator" />
+          <ScalarProperty Name="blStatus" ColumnName="blStatus" />
+          <ScalarProperty Name="chValue" ColumnName="chValue" />
+          <ScalarProperty Name="chKey" ColumnName="chKey" />
+          <ScalarProperty Name="sqCommonSettingsId" ColumnName="sqCommonSettingsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

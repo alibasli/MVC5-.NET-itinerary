@@ -1,0 +1,86 @@
+﻿@model SeyahatIstanbul.Models.Customer
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.3.custom.min.js"></script>
+
+    <script>
+        $(function () {
+            $.datepicker.regional['tr'] = {
+                closeText: 'kapat',
+                prevText: '&#x3c;geri',
+                nextText: 'ileri&#x3e',
+                currentText: 'bugün',
+                monthNames: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+                'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+                monthNamesShort: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz',
+                'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
+                dayNames: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
+                dayNamesShort: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
+                dayNamesMin: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
+                weekHeader: 'Hf',
+                dateFormat: 'dd.mm.yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+            $.datepicker.setDefaults($.datepicker.regional['tr']);
+            $("#dtBirthDate").datepicker();
+            //$.datepicker.regional['tr'] = {
+            //    closeText: 'kapat',
+            //    prevText: '&#x3c;geri',
+            //    nextText: 'ileri&#x3e',
+            //    currentText: 'bugün',
+            //    monthNames: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+            //    'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+            //    monthNamesShort: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz',
+            //    'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
+            //    dayNames: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
+            //    dayNamesShort: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
+            //    dayNamesMin: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
+            //    weekHeader: 'Hf',
+            //    dateFormat: 'dd.mm.yy',
+            //    firstDay: 1,
+            //    isRTL: false,
+            //    showMonthAfterYear: false,
+            //    yearSuffix: ''
+            //};
+            //$.datepicker.setDefaults($.datepicker.regional['tr']);
+            //var d = new Date();
+            //var year = d.getFullYear() - 30;
+            //$("#dtBirthDate").datepicker({
+            //    yearRange: "-80:-18",
+            //    changeMonth: true,
+            //    changeYear: true,
+            //    defaultDate: new Date(year, d.getMonth(), d.getDate())
+
+            //});
+
+            //$('#chName').blur(function () {
+            //    $('#chName').val(capitaliseFirstLetter($('#chName').val()));
+            //});
+            //$('#chSurname').blur(function () {
+            //    $('#chSurname').val(capitaliseFirstLetter($('#chSurname').val()));
+            //});
+        });
+    </script>
+
+</head>
+<body>
+    <div class="control-group">
+        @Html.LabelFor(d => d.dtBirthDate, new { @class = "control-label" })
+        <div class="controls clear">
+            @Html.TextBoxFor(d => d.dtBirthDate, new { @class = "txt datepicker" })
+            @Html.ValidationMessageFor(d => d.chEmail)
+        </div>
+    </div>
+</body>
+</html>

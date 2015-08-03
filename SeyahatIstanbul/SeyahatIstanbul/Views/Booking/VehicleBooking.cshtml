@@ -1,0 +1,304 @@
+﻿@model IEnumerable<SeyahatIstanbul.Models.VehicleList>
+@using SeyahatIstanbul.Models
+@{
+    ViewBag.Title = "Araç Kiralama";
+}
+<script>
+    $(function () {
+
+        $("#loading").css("left", $("#dvLeftContent").position().left);
+        $("#loading").css("top", $("#dvLeftContent").position().top);
+
+        $(".dvTab:first").addClass("dvTabActive");
+        $(".dvTabContent").hide();
+        $(".dvTabContent:first").show();
+        $(".dvTab").click(function (e) {
+            var index = $(this).index();
+            $("#dvArabaTabContent").trigger("reset");
+            $("#dvApartTabContent").trigger("reset");
+            $("#dvTourTabContent").trigger("reset");
+            $(".dvTab").removeClass("dvTabActive");
+            $(this).addClass("dvTabActive");
+            $(".dvTabContent").hide();
+            $(".dvTabContent:eq(" + index + ")").show();
+        });
+        $.datepicker.regional['tr'] = {
+            closeText: 'kapat',
+            prevText: '&#x3c;geri',
+            nextText: 'ileri&#x3e',
+            currentText: 'bugün',
+            monthNames: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+            'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+            monthNamesShort: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz',
+            'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
+            dayNames: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
+            dayNamesShort: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
+            dayNamesMin: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
+            weekHeader: 'Hf',
+            dateFormat: 'dd.mm.yy',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''
+        };
+        $.datepicker.setDefaults($.datepicker.regional['tr']);
+        //Vehicle
+        var pickerOpts = {
+            onSelect: function () {
+                var date2 = $('#dtVehStartDate').datepicker('getDate', '+1d');
+                date2.setDate(date2.getDate() + 1);
+                $('#dtVehEndDate').datepicker('setDate', date2);
+
+                $("#dtVehEndDate").datepicker("destroy");
+                var pickerOpts2 = {
+                    minDate: $("#dtVehStartDate").val()
+                }
+                $("#dtVehEndDate").datepicker(pickerOpts2);
+            },
+            minDate: new Date(),
+            maxDate: "+30"
+        }
+
+        $("#dtVehStartDate").datepicker(pickerOpts);
+        $("#dtVehEndDate").datepicker(pickerOpts);
+        //Apart
+        var pickerOpts_2 = {
+            onSelect: function () {
+                var date2 = $('#dtApartStartDate').datepicker('getDate', '+1d');
+                date2.setDate(date2.getDate() + 1);
+                $('#dtApartEndDate').datepicker('setDate', date2);
+
+                $("#dtApartEndDate").datepicker("destroy");
+                var pickerOpts2 = {
+                    minDate: $("#dtApartStartDate").val()
+                }
+                $("#dtApartEndDate").datepicker(pickerOpts2);
+            },
+            minDate: new Date(),
+            maxDate: "+60"
+        }
+
+        $("#dtApartStartDate").datepicker(pickerOpts_2);
+        $("#dtApartEndDate").datepicker(pickerOpts_2);
+
+        //tour
+        var pickerOpts_3 = {
+            onSelect: function () {
+                var date2 = $('#dtTourDate').datepicker('getDate', '+1d');
+                date2.setDate(date2.getDate() + 1);
+            },
+            minDate: new Date(),
+            maxDate: "+60"
+        }
+        $("#dtTourDate").datepicker(pickerOpts_3);
+
+    });
+
+    function sessionControl() {
+        $.ajax({
+            url: '@Url.Action("sessionControl", "Setting")',
+            type: 'POST',
+            success: function (data) {
+                $('#session').val(data);
+                return;
+            },
+            error: function () {
+                alert("İstenmeyen bir hata oluştu lütfen tekrar deneyiniz");
+            }
+        });
+    }
+
+    function booking(form, url_) {
+        $.ajax({
+            url: url_,
+            type: 'POST',
+            data: form.serialize(),
+            beforeSend: function () {
+                $('#loading').show();
+            },
+            complete: function () {
+                $('#loading').hide();
+            },
+            success: function (data) {
+                if (data.dgErrorCode == 5) {
+                    $("#dvMesaj").html("<div class='error2'><div class='errorIcon'></div>" + data.chError + " </div>");
+
+                    $("#dialog-message").dialog({
+                        maxWidth: 600,
+                        maxHeight: 300,
+                        width: 500,
+                        height: 300,
+                        modal: true,
+                        buttons: {
+                            Ok: function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                }
+                else if (data.dgErrorCode != 0) {
+                    $("#dvMesaj").html("<div class='error2'><div class='errorIcon'></div>" + data.chError + " </div>");
+
+                    $("#dialog-message").dialog({
+                        maxWidth: 400,
+                        maxHeight: 250,
+                        width: 400,
+                        height: 250,
+                        modal: true,
+                        buttons: {
+                            Ok: function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                }
+                else {
+                    $("#dvMesaj").html("<div class='sucsess'><div class='sucsessIcon'></div>" + data.chError + " </div>");
+                    $("#dialog-message").dialog({
+                        maxWidth: 400,
+                        maxHeight: 250,
+                        width: 400,
+                        height: 250,
+                        modal: true,
+                        buttons: {
+                            Ok: function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                }
+
+
+                @*if (data. == "-1")
+                $('#uyeGirisi').trigger('click');
+                //window.location.href = '@Url.Action("VehicleBooking", "Booking")';
+                //alert(data);*@
+            },
+            error: function () {
+
+                alert("İstenmeyen bir hata oluştu lütfen tekrar deneyiniz");
+            }
+        });
+    }
+
+    function vehicleRent() {
+        $.ajax({
+            url: '@Url.Action("sessionControl", "Setting")',
+            type: 'POST',
+            success: function (data) {
+                if (data == "0") {
+                    $('#uyeGirisi').trigger('click');
+                    return false;
+                }
+                else if ($('#rfVehicleId').val() == ""
+                        || $('#rfVehDeliveryPlace_1').val() == ""
+                        || $('#dtVehStartDate').val() == ""
+                        || $('#rfVehDeliveryPlace_2').val() == ""
+                        || $('#dtVehEndDate').val() == "") {
+
+                    alert("Bilgiler boş geçilemez");
+                    return false;
+                }
+                else {
+                    $('#rfVehCategoryId').val("1");
+                    var form = $('#dvArabaTabContent');
+                    var url_ = '@Url.Action("VehicleBooking", "Booking")';
+                    booking(form, url_);
+                    return true;
+                }
+            },
+            error: function () {
+                alert("İstenmeyen bir hata oluştu lütfen tekrar deneyiniz");
+            }
+        });
+
+    }
+    function apartRent() {
+        $.ajax({
+            url: '@Url.Action("sessionControl", "Setting")',
+            type: 'POST',
+            success: function (data) {
+                if (data == "0") {
+                    $('#uyeGirisi').trigger('click');
+                    return false;
+                }
+                else if ($('#rfApartId').val() == ""
+                        || $('#dtApartStartDate').val() == ""
+                        || $('#dtApartEndDate').val() == "") {
+
+                    alert("Bilgiler boş geçilemez");
+                    return false;
+                }
+                else {
+                    $('#rfApartCategoryId').val("2");
+                    var form = $('#dvApartTabContent');
+                    var url_ = '@Url.Action("ApartBooking", "Booking")';
+                    booking(form, url_);
+                    return true;
+                }
+            },
+            error: function () {
+                alert("İstenmeyen bir hata oluştu lütfen tekrar deneyiniz");
+            }
+        });
+
+    }
+    function tourRent() {
+        $.ajax({
+            url: '@Url.Action("sessionControl", "Setting")',
+            type: 'POST',
+            success: function (data) {
+                if (data == "0") {
+                    $('#uyeGirisi').trigger('click');
+                    return false;
+                }
+                else if ($('#rfTourId').val() == ""
+                        || $('#dtTourDate').val() == "") {
+
+                    alert("Bilgiler boş geçilemez");
+                    return false;
+                }
+                else {
+                    $('#rfTourCategoryId').val("3");
+                    var form = $('#dvTourTabContent');
+                    var url_ = '@Url.Action("TourBooking", "Booking")';
+                    booking(form, url_);
+                    return true;
+                }
+
+            },
+            error: function () {
+                alert("İstenmeyen bir hata oluştu lütfen tekrar deneyiniz");
+            }
+        });
+
+    }
+</script>
+
+<h2>VehicleBooking</h2>
+@foreach (var item in ViewBag.vehicle as IList<VehicleList>)
+{
+
+    <form id="frmVehicle" method="post">
+        <div id="hata" class="hataAlani"></div>
+        <div class="clear"></div>
+        <div class="left" style=" margin-right:22px;">
+            <div class="control-group">
+                @Html.Label("Araç", new { @class = "control-label" })
+                <div class="controls clear">
+                    @Html.TextBox("fulName", item.fulName, new { @class = "txt required", @readonly = "true" })
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group btn_group">
+            <div class="controls">
+                <button id="btnSave" type="submit" class="btn btn-large btn-block btn-primary">Kaydet</button>
+                @*<a></a>
+                    <asp:Button ID="btnKaydet" Width="80px" runat="server" class="btn btn-success" Text="Kaydet" OnClick="btnKaydet_Click" />
+                    <a></a>
+                    <asp:Button ID="btnTemizle" Width="80px" runat="server" class="btn btn-warning" Text="Temizle" />*@
+            </div>
+        </div>
+    </form>
+}

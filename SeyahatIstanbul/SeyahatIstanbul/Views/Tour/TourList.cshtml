@@ -1,0 +1,56 @@
+﻿@model IEnumerable<SeyahatIstanbul.Models.TourList>
+@using SeyahatIstanbul.Models
+@{
+    ViewBag.Title = "Turlarımız - Seyahat İstanbul";
+}
+@section rsHead{
+    <link href="~/Content/VehicleList.css" rel="stylesheet" />
+}
+
+
+
+<div id="dvContent">
+    <h2>Turlarımız</h2>
+
+    <div class="vhContainer">
+
+        @foreach (var item in ViewBag.TourList as IList<TourList>)
+        {
+            <div class="vehicle">
+                <div class="vhHeader">
+                    <div class="vhName left"> @item.Desc </div>
+                    <div class="vhPropertyTitle left">Tur Özellikleri</div>
+                    <div class="vhPriceTitle left"> Fiyat Listesi</div>
+                </div>
+                <div class="vhContent">
+                    <div class="vhImage left"><img src="@Url.Content("~/Content/img/RentTur/" + @item.imageRoute_2)" width="210" height="130" alt="resim yükleniyor" /></div>
+                    <div class="vhProperty left">
+                        <div class="icon left"><img src="~/Content/img/location_icon.png" alt="resim yükleniyor" /></div><div class="property left">@item.StartPlace</div>
+                        <div class="clear"></div>
+                        <div class="icon left"><img src="~/Content/img/size_icon.png" alt="resim yükleniyor" /></div><div class="property left">@item.Places</div>
+                        <div class="clear"></div>
+                        <div class="icon left"><img src="~/Content/img/people-icon.jpg" alt="resim yükleniyor" /></div><div class="property left">@item.PeopleCount</div>
+                    </div>
+                    <div class="vhPrice left">
+                        <div class="priceDay left">1-7 Gün </div><div class="price left">@item.price_1_7</div>
+                        <div class="clear2"></div>
+                        <div class="priceDay left">8-15 Gün </div><div class="price left">@item.price_8_15</div>
+                        <div class="clear2"></div>
+                        <div class="priceDay left">16-24 Gün </div><div class="price left">@item.price_16_24</div>
+                        <div class="clear2"></div>
+                        <div class="priceDay left">25+ Gün </div><div class="price left">@item.price_25</div>
+                    </div>
+                    <div class="bookingContent right">
+                        <a href="@Url.Action("VehicleBooking", "Booking", new { id = @item.fulName })" style="text-decoration: none;"><div class="btnBooking">Rezarvasyon Yap</div> </a>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+
+
+    </div>
+</div>
+

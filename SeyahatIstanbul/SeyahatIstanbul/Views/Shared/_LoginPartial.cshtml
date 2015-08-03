@@ -1,0 +1,131 @@
+﻿@model SeyahatIstanbul.Models.Login
+<script type="text/javascript">
+    $(document).ready(function () {
+        var X = 0;
+        $("#ddAccountButton").click(function () {
+            if (X == 0) {
+                var w = $(this).css('width');
+                $(".submenu").css('width', w);
+                $(".submenu").show();
+                $("#ddAccountButton").addClass('ddActive');
+                X = 1;
+            }
+            else {
+                $(".submenu").hide();
+                $("#ddAccountButton").removeClass('ddActive');
+                X = 0;
+
+            }
+
+        });
+
+        //Mouseup textarea false
+        $(".submenu").mouseup(function () {
+            return false
+        });
+        $("#ddAccountButton").mouseup(function () {
+            return false
+        });
+       
+
+
+        //Textarea without editing.
+        $(document).mouseup(function () {
+            $(".submenu").hide();
+            $("#ddAccountButton").removeClass('ddActive');
+            X = 0;
+        });
+
+    });
+
+</script>
+
+@if (@Session["kId"] != null)
+{
+    <div id="myAccount" class="uyeContent">
+        <div class="dropdown">
+            <div id="ddAccountButton"> Mustafa Çavdaroğlu <img style="margin-top:-2px; margin-left:10px;" src="~/Content/img/arrow.png" /></div>
+            <div class="submenu" style="display: none; ">
+                <ul class="root">
+                    <li>
+                        <a href="#Dashboard">Dashboard</a>
+                    </li>
+
+
+                    <li>
+                        <a href="#Profile">Profile</a>
+                    </li>
+                    <li>
+
+                        <a href="#settings">Settings</a>
+                    </li>
+
+
+                    <li>
+                        <a href="#feedback">Send Feedback</a>
+                    </li>
+
+
+
+                    <li>
+                        <a href="#signout">Sign Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="dvUserContainer">
+            <div class="dropdown">
+                <a class="account">
+                    @Html.ActionLink(@Session["kAdSoyad"].ToString(), "UyeGirisi", "Account", routeValues: null, htmlAttributes: new { @class = "uyeContent", id = "uyeGirisi" })
+                </a>
+                <div class="submenu" style="display: none; ">
+
+                    <ul class="root">
+                        <li>
+                            <a href="#Dashboard">Dashboard</a>
+                        </li>
+
+
+                        <li>
+                            <a href="#Profile">Profile</a>
+                        </li>
+                        <li>
+
+                            <a href="#settings">Settings</a>
+                        </li>
+
+
+                        <li>
+                            <a href="#feedback">Send Feedback</a>
+                        </li>
+
+
+
+                        <li>
+                            <a href="#signout">Sign Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @*<div id="dvUserContainer">
+                <div class="dvUyeContent">@Html.ActionLink(@Session["kAdSoyad"].ToString(), "UyeGirisi", "Account", routeValues: null, htmlAttributes: new { @class = "uyeContent", id = "uyeGirisi" })</div>
+
+            </div>*@
+}
+else
+{
+    <div id="myAccount" class="uyeContent">
+        <div class="dvUyeContent">
+            @*@Html.ActionLink("Üye Girişi", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "uyeContent", id = "uyeGirisi" })*@
+            <a href="@Url.Action("Login2", "Account")" class="uyeContent" id="uyeGirisi">@Html.LabelFor(d => d.login)</a>
+        </div>
+        <div class="dvAyracHeader"></div>
+        <div class="dvUyeContent">
+            @*@Html.ActionLink("Yeni Üye", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "uyeContent", id = "yeniUye" })*@
+            <a href="@Url.Action("Register", "Account")" class="uyeContent" id="yeniUye">@Html.LabelFor(d => d.register)</a>
+        </div>
+    </div>
+}

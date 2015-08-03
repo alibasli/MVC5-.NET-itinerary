@@ -1,0 +1,239 @@
+﻿@model SeyahatIstanbul.Models.Customer
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="~/Content/LoginRegister.css" rel="stylesheet" />
+    @*<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.js" type="text/javascript"></script>*@
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+
+    <script src="~/Content/Jquery/js/jquery-1.10.2.js"></script>
+    <script src="~/Content/Jquery/js/jquery-ui-1.10.4.custom.min.js"></script>
+    <link href="~/Content/Jquery/css/start/jquery-ui-1.10.4.custom_min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    @*<script src="//ajax.aspnetcdn.com/ajax/jQuery.validate/1.11.1/jquery.validate.js" type="text/javascript"></script>*@
+    @*<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>*@
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/jquery.ui.datepicker.js"></script>
+
+    <style>
+        form {
+            padding: 10px;
+        }
+
+        .error {
+            border: 1px solid #b94a48 !important;
+            background-color: #fee !important;
+        }
+    </style>
+    <script>
+        $(function () {
+
+            $.datepicker.regional['tr'] = {
+                closeText: 'kapat',
+                prevText: '&#x3c;geri',
+                nextText: 'ileri&#x3e',
+                currentText: 'bugün',
+                monthNames: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+                'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+                monthNamesShort: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz',
+                'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
+                dayNames: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
+                dayNamesShort: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
+                dayNamesMin: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
+                weekHeader: 'Hf',
+                dateFormat: 'dd.mm.yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+            $.datepicker.setDefaults($.datepicker.regional['tr']);
+            var d = new Date();
+            var year = d.getFullYear() - 30;
+            $("#dtBirthDate").datepicker({
+                yearRange: "-80:-18",
+                changeMonth: true,
+                changeYear: true,
+                defaultDate: new Date(year, d.getMonth(), d.getDate())
+
+            });
+
+            $('#chName').blur(function () {
+                $('#chName').val(capitaliseFirstLetter($('#chName').val()));
+            });
+            $('#chSurname').blur(function () {
+                $('#chSurname').val(capitaliseFirstLetter($('#chSurname').val()));
+            });
+        });
+        function capitaliseFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+    </script>
+
+</head>
+<body>
+    <div id="container">
+        <header>
+            <div id="dvBaslik">Üye Kaydı</div>
+        </header>
+        <div class="dvClear"></div>
+        <div id="bodyContainer">
+            <section>
+                <form id="frmUser" method="post">
+                    <div id="hata" class="hataAlani"></div>
+                    <div class="clear"></div>
+                    <div>
+                        <div class="left" style=" margin-right:22px;">
+                            <div class="control-group">
+                                @Html.LabelFor(d => d.chName, new { @class = "control-label" })
+                                <div class="controls clear">
+                                    @Html.TextBoxFor(d => d.chName, new { @class = "txt required" })
+                                    @Html.ValidationMessageFor(d => d.chName)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="left">
+                            <div class="control-group">
+                                @Html.LabelFor(d => d.chSurname, new { @class = "control-label" })
+                                <div class="controls clear">
+                                    @Html.TextBoxFor(d => d.chSurname, new { @class = "txt" })
+                                    @Html.ValidationMessageFor(d => d.chSurname)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="control-group">
+                        @Html.LabelFor(d => d.dtBirthDate, new { @class = "control-label" })
+                        <div class="controls clear">
+                            @Html.TextBoxFor(d => d.dtBirthDate, new { @class = "txt datepicker" })
+                            @Html.ValidationMessageFor(d => d.chEmail)
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="control-group">
+                        @Html.LabelFor(d => d.chEmail, new { @class = "control-label" })
+                        <div class="controls clear">
+                            @Html.TextBoxFor(d => d.chEmail, new { @class = "txt" })
+                            @Html.ValidationMessageFor(d => d.chEmail)
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="control-group">
+                        @Html.LabelFor(d => d.chPassword, new { @class = "control-label" })
+                        <div class="controls clear">
+                            @Html.PasswordFor(d => d.chPassword, new { @class = "txt" })
+                            @Html.ValidationMessageFor(d => d.chPassword)
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="control-group">
+                        @Html.LabelFor(d => d.chDesc, new { @class = "control-label" })
+                        <div class="controls clear">
+                            @Html.PasswordFor(d => d.chDesc, new { @class = "txt" })
+                            @Html.ValidationMessageFor(d => d.chDesc)
+                        </div>
+                    </div>
+                    <div class="control-group btn_group">
+                        <div class="controls">
+                            <button id="btnSave" type="submit" class="btn btn-large btn-block btn-primary">Kaydet</button>
+                            @*<a></a>
+                                <asp:Button ID="btnKaydet" Width="80px" runat="server" class="btn btn-success" Text="Kaydet" OnClick="btnKaydet_Click" />
+                                <a></a>
+                                <asp:Button ID="btnTemizle" Width="80px" runat="server" class="btn btn-warning" Text="Temizle" />*@
+                        </div>
+                    </div>
+                </form>
+                <script type="text/javascript">
+                    $("form").validate({
+                        showErrors: function (errorMap, errorList) {
+
+                            // Clean up any tooltips for valid elements
+                            $.each(this.validElements(), function (index, element) {
+                                var $element = $(element);
+
+                                $element.data("title", "") // Clear the title - there is no error associated anymore
+                                .removeClass("error")
+                                .tooltip("destroy");
+                            });
+
+                            // Create new tooltips for invalid elements
+                            $.each(errorList, function (index, error) {
+                                var $element = $(error.element);
+
+                                $element.tooltip("destroy") // Destroy any pre-existing tooltip so we can repopulate with new tooltip content
+                                .data("title", error.message)
+                                .addClass("error")
+                                .tooltip(); // Create a new tooltip based on the error messsage we just set in the title
+                            });
+                        },
+                        rules: {
+                            chEmail: { email: true, required: true },
+                            chName: { required: true },
+                            chSurname: { required: true },
+                            chPassword: { required: true },
+                            chDesc: { equalTo: "#chPassword" },
+                            dtBirthDate: { required: true }
+                        },
+                        messages: {
+                            chName: "Ad alanı boş geçilmez",
+                            chSurname: "Soyad alanı boş geçilmez",
+                            chEmail: {
+                                required: "Email alanı boş geçilmez",
+                                email: "Geçerli bir email giriniz"
+                            },
+                            chPassword: "Şifre alanı boş geçilmez",
+                            chDesc: { equalTo: "Şifre aynı değil" },
+                            dtBirthDate: "Doğum Tarihi alanı boş geçilmez"
+                        },
+                        submitHandler: function (form) {
+                            $.ajax({
+                                url: '@Url.Action("Register", "Account")',
+                                type: 'POST',
+                                data: $('#frmUser').serialize(),
+                                success: function (data_1) {
+                                    if (data_1 == -1) {
+                                        $('#hata').html("! Bu e-posta adresi kullanılmaktadır. E-posta adresi size ait ise giriş yapabilirsiniz; yoksa e-posta adresini değiştiriniz.");
+                                    }
+                                    else if (data_1 == 0) {
+                                        $('#hata').html("! Zorunlu alanlar boş geçilemez");
+
+                                    }
+                                    else if (data_1 == 1) {
+                                        $('#frmUser').html("<div class='sucsess'><div class='sucsessIcon'></div> Kaydınız Başarı ile gerçekleşti</div>");
+                                        //setTimeout(function () { $("#cboxClose").trigger("click"); }, 2000);
+                                        window.setTimeout(' window.parent.location.reload();', 1000);
+                                        //window.parent.location.reload();
+                                    }
+                                    else {
+                                        $('#frmUser').html("<div class='error2'><div class='errorIcon'></div>İstenmeyen bir hata oluştu lütfen daha sonra tekrar deneyiniz </div>");
+                                        //setTimeout(function () { $("#cboxClose").trigger("click"); }, 2000);
+                                        window.setTimeout(' window.parent.location.reload();', 1000);
+                                        //window.parent.location.reload();
+                                    }
+                                    
+                                },
+                                error: function () {
+                                    alert("İstenmeyen bir hata oluştu lütfen tekrar deneyiniz");
+                                }
+                            });
+                        }
+                    });
+                    function call(data) {
+                        alert(data);
+                    }
+                </script>
+            </section>
+        </div>
+        <footer></footer>
+    </div>
+</body>
+</html>

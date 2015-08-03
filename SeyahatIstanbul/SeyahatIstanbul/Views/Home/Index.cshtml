@@ -1,0 +1,172 @@
+﻿@model SeyahatIstanbul.Models.CommunicationDisplay
+@using SeyahatIstanbul.Models
+@{
+    ViewBag.Title = "Seyahat İstanbul";
+}
+@section rsHead{
+    <link href="~/Content/tabs.css" rel="stylesheet" />
+    <link href="~/Content/index.css" rel="stylesheet" />
+
+}
+@section rsleftContent{
+    @Html.Partial("~/Views/Shared/_FastBookingPartial.cshtml")
+    @*<div class="comTitle">İletişim Bilgileri</div>*@
+    <div id="dvCom">
+        <div class="clear"></div>
+        <div class="place">@Html.LabelFor(d => d.comPlace_1)</div>
+        <div class="clear"></div>
+        <div class="clear"></div>
+        <div class="comInf"><img src="~/Content/img/phones_icon.jpg" alt="resim yükleniyor" style="width: 20px; height:30px;" /></div>
+        <div class="com">0535 776 28 96</div>
+        <div class="clear"></div>
+        <div class="comInf"><img src="~/Content/img/mobile_icon.jpg" alt="resim yükleniyor" style="width: 20px; height:30px;" /></div>
+        <div class="com">0535 776 28 96</div>
+        <div class="clear"></div>
+        <div class="comInf"><img src="~/Content/img/email_icon.jpg" alt="resim yükleniyor" style="width: 20px; height:30px;" /></div>
+        <div class="com">info@seyahatistanbul.com</div>
+        <div class="clear"></div>
+        <div class="clear"></div>
+        <div class="clear"></div>
+
+        <div class="place">@Html.LabelFor(d => d.comPlace_2)</div>
+        <div class="clear"></div>
+        <div class="clear"></div>
+        <div class="comInf"><img src="~/Content/img/mobile_icon.jpg" alt="resim yükleniyor" style="width: 20px; height:30px;" /></div>
+        <div class="com">00491776893272</div>
+        <div class="clear"></div>
+        <div class="comInf"><img src="~/Content/img/mobile_icon.jpg" alt="resim yükleniyor" style="width: 20px; height:30px;" /></div>
+        <div class="com">004917692993403</div>
+        <div class="clear"></div>
+        <div class="comInf"><img src="~/Content/img/email_icon.jpg" alt="resim yükleniyor" style="width: 20px; height:30px;" /></div>
+        <div class="com">info@seyahatistanbul.com</div>
+    </div>
+}
+<article id="sliderPanel" class="dvBorderSettings">
+    <div id="slider">
+        <ul class="slider">
+            @foreach (var item in ViewBag.sliderList as IList<SliderList>)
+            {
+                <li><a href="#"><img src="@Url.Content(@item.imageRoute_1)" width="640" height="340" alt="resim yükleniyor" /></a></li>
+            }
+        </ul>
+        <div class="sayfa">
+            @foreach (var item in ViewBag.sliderList as IList<SliderList>)
+            {
+                <a href="#"><div class="small_image"><img src="@Url.Content(@item.imageRoute_2)" alt="resim yükleniyor" /></div></a>
+            }
+
+        </div>
+        <a href="#" id="onceki"></a>
+        <a href="#" id="sonraki"></a>
+    </div>
+    <script>
+        $(function () {
+            $("#slider").hover(function () {
+                $("#onceki").addClass("oncekiAktif");
+                $("#sonraki").addClass("sonrakiAktif");
+            }, function () {
+                $("#onceki").removeClass("oncekiAktif");
+                $("#sonraki").removeClass("sonrakiAktif");
+            });
+            var sure = 3000;
+            $(".sayfa a .small_image:first").addClass("aktif");
+            var toplamLi = $("ul.slider li").length;
+            var genislik = 640;
+            var toplamGenislik = toplamLi * genislik;
+            $("ul.slider").css("width", toplamGenislik + "px");
+            var deger = 0;
+
+            $(".sayfa a .small_image").click(function () {
+                var indis = $(this).parent().index();
+                yeniDeger = indis * genislik;
+                $("ul.slider").animate({ marginLeft: "-" + yeniDeger + "px" }, 0);
+                $(".sayfa a .small_image").removeClass("aktif");
+                $(this).addClass("aktif");
+                deger = indis;
+                return false;
+            });
+
+            $("a#sonraki").click(function () {
+                $(".sayfa a  .small_image").removeClass("aktif");
+                if (deger < toplamLi - 1) {
+                    deger++;
+                    yeniDeger = deger * genislik;
+                    $("ul.slider").animate({ marginLeft: "-" + yeniDeger + "px" }, 250);
+                }
+                else {
+                    deger = 0;
+                    $("ul.slider").animate({ marginLeft: 0 }, 0);
+                }
+                $(".sayfa a:eq(" + deger + ")").find(".small_image").addClass("aktif");
+                return false;
+            });
+
+            $("a#onceki").click(function () {
+                $(".sayfa a .small_image").removeClass("aktif");
+                if (deger > 0) {
+                    deger--;
+                    yeniDeger = deger * genislik;
+                    $("ul.slider").animate({ marginLeft: "-" + yeniDeger + "px" }, 250);
+                }
+                else {
+                    deger = toplamLi - 1;
+                    yeniDeger = deger * genislik;
+                    $("ul.slider").animate({ marginLeft: "-" + yeniDeger + "px" }, 0);
+                }
+                $(".sayfa a:eq(" + deger + ")").find(".small_image").addClass("aktif");
+                return false;
+            });
+
+            $.dondur = function () {
+                $(".sayfa a .small_image").removeClass("aktif");
+                if (deger < toplamLi - 1) {
+                    deger++;
+                    yeniDeger = deger * genislik;
+                    $("ul.slider").animate({ marginLeft: "-" + yeniDeger + "px" }, 250);
+                }
+                else {
+                    deger = 0;
+                    $("ul.slider").animate({ marginLeft: 0 }, 0);
+                }
+                $(".sayfa a:eq(" + deger + ")").find(".small_image").addClass("aktif");
+                return false;
+            }
+
+
+            var sliderDondur = setInterval('$.dondur()', sure);
+
+            $("#slider").hover(function () {
+                clearInterval(sliderDondur);
+
+            }, function () {
+                sliderDondur = setInterval('$.dondur()', sure);
+            });
+        });
+    </script>
+</article>
+<article id="infContent">
+    <div id="rentCar" class="inf">
+        <a href="@Url.Action("VehicleList","Vehicle")"><img src="~/Content/img/rent_vehicle_inf.jpg" alt="resim yükleniyor" style="width: 150px; height:60px;" /></a>
+        <h3><a href="@Url.Action("VehicleList","Vehicle")" style="text-decoration: none;">Araç Kiralama Hizmeti</a></h3>
+        Müşterilerimize kaliteli ve yüksek hizmet sağlamak için çıktığımız bu yolda geniş araç filomuzla hizmetinizdeyiz.
+        Bu sebeple, araç filomuzu sürekli yeniliyoruz ve araçlarımızın bakımlarını yetkili servislerde periyodik olarak yaptırıyoruz.
+        İhtiyaçlarınıza uygun olacak tüm modelleri filomuzda bulabiliriz. Ekonomik, Konfor, Üst, Lüks ve Özel olarak gruplandırdığımız araçlarımızı beğeninize sunuyoruz.
+
+    </div>
+    <div class="clear"></div>
+    <div class="inf">
+        <a href="@Url.Action("ApartInfo","Apart")"><im><img src="~/Content/img/rent_apart_inf.jpg" alt="resim yükleniyor" style="width: 150px; height:60px;" /></a>
+        <h3><a href="@Url.Action("ApartInfo", "Apart")" st style="text-decoration: none;">Apart Kiralama Hizmeti</a></h3>
+        Rahatınız ve güvenliğiniz için ister ailenizle ister tek yada arkadaşlarınızla kalabileceğiniz 3 + 1, 2 + 1, 1 + 1, apartlarımız mevcuttur.
+        Apartlarımızda aradığınız herşeyi bulabilirsiniz. Ulaşım kolaylığı ve temizliği ile apartlarımızı hizmetinize sunuyoruz.
+        İşimiz Müşterilerimizi en iyi şekilde ağırlayıp en güzel şekilde uğurlamaktır.
+    </div>
+    <div class="clear"></div>
+    <div class="inf">
+        <a href="@Url.Action("TurInfo","Tur")"><img sr><img src="~/Content/img/rent_tur_inf.jpg" alt="resim yükleniyor" style="width: 150px; height:60px;" /></a>
+        <h3><a href="@Url.Action("TurInfo", "Tur")" style= style="text-decoration: none;">İstanbul İçi Tur Hizmeti</a></h3>
+        Yedi tepe İstanbul'u hem gözlerinizle hemde kalbinizle görmeniz için buradayız.
+        İstanbul turumuz ile aklınıza gelebilecek hertürlü tarihi ve doğal güzellikleri ayağınıza götürüyoruz.
+        Ayasofya'sıyla, Sultan Ahmeti'yle, boğaz manzarasıyla İstanbul'u daha önce görmediğiniz güzellikleriyle sunuyoruz ve "Memnuniyetiniz hedefimizdir !" slogonuyla yola çıkıyoruz.
+    </div>
+</article>

@@ -1,0 +1,85 @@
+﻿@using SeyahatIstanbul.Models
+@{
+    ViewBag.Title = "İletişim - Seyahat İstanbul";
+}
+@section rsHead{
+    <link href="~/Content/VehicleList.css" rel="stylesheet" />
+}
+
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <link href="~/Content/iletisim.css" rel="stylesheet" />
+    <link href="~/Content/index.css" rel="stylesheet" />
+  <script src="~/Content/Jquery/js/jquery-1.5.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+     $('#mesaj').hover(
+         function () {
+          $("#formalani").filter(':not(:animated)').animate({height:410},{duration:300});
+         }, 
+         function () {
+          $("#formalani").filter(':not(:animated)').animate({height:50});
+         }
+     );
+   });
+</script>
+@section rsleftContent{
+    <div id="dvContent">
+    <h2>    İletişim Bilgileri     </h2>
+    <div class="yan">
+        <div id="dvCom2">
+        <div class="clear"></div>
+        <div class="place">Türkiye İletişim Bilgilesi</div>
+        <div class="clear"></div>
+        <div class="clear"></div>
+        <div class="comInf"><img src="~/Content/img/phones_icon.jpg" alt="resim yükleniyor" style="width: 20px; height:30px;" /></div>
+        <div class="com">0535 776 28 96</div>
+        <div class="clear"></div>
+        <div class="comInf"><img src="~/Content/img/mobile_icon.jpg" alt="resim yükleniyor" style="width: 20px; height:30px;" /></div>
+        <div class="com">0535 776 28 96</div>
+        <div class="clear"></div>
+        <div class="comInf"><img src="~/Content/img/email_icon.jpg" alt="resim yükleniyor" style="width: 20px; height:30px;" /></div>
+        <div class="com">info@seyahatistanbul.com</div>
+        <div class="clear"></div>
+        <div class="clear"></div>
+        <div class="clear"></div>
+
+        <div class="place">Almanya İletişim Bilgilesi</div>
+        <div class="clear"></div>
+        <div class="clear"></div>
+        <div class="comInf"><img src="~/Content/img/mobile_icon.jpg" alt="resim yükleniyor" style="width: 20px; height:30px;" /></div>
+        <div class="com">00491776893272</div>
+        <div class="clear"></div>
+        <div class="comInf"><img src="~/Content/img/mobile_icon.jpg" alt="resim yükleniyor" style="width: 20px; height:30px;" /></div>
+        <div class="com">004917692993403</div>
+        <div class="clear"></div>
+        <div class="comInf"><img src="~/Content/img/email_icon.jpg" alt="resim yükleniyor" style="width: 20px; height:30px;" /></div>
+        <div class="com">info@seyahatistanbul.com</div>
+    </div>
+         </div>
+        </div>
+     }
+      <h2 style="margin-left:200px;">   Bize Ulaşmak İçin    </h2>
+<div id="mesaj">
+	<div id="formalani">
+		<form action="" method="post">
+			<div id="tasiyici">
+				<textarea id="mesajalani" cols="20" name="TextArea1" onblur="if (value =='') {value = 'Mesajınızı buraya yazınız...'}" onfocus="if (value == 'Mesajınızı buraya yazınız...') {value =''}" rows="2">Mesajınızı buraya yazınız...</textarea>
+				<div>
+					<input class="input" name="Text1" onblur="if (value =='') {value = 'İsim'}" onfocus="if (value == 'İsim') {value =''}" type="text" value="İsim" />
+					<input class="input" name="Text1" onblur="if (value =='') {value = 'E-Posta'}" onfocus="if (value == 'E-Posta') {value =''}" type="text" value="E-Posta" />
+					<input class="input" name="Text1" onblur="if (value =='') {value = 'Web Site'}" onfocus="if (value == 'Web Site') {value =''}" type="text" value="Web Site" />
+				</div>
+				<div id="gonder">
+					<input class="gonder" name="gonder" type="submit" value="" />
+				</div>
+			</div>
+		</form>
+	</div>
+	<div id="resim">
+	</div>
+      </div>
+   
+    
+   
+

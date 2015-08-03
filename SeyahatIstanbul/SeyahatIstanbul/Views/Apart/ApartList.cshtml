@@ -1,0 +1,92 @@
+﻿@model IEnumerable<SeyahatIstanbul.Models.ApartList>
+@using SeyahatIstanbul.Models
+@{
+    ViewBag.Title = "Apartlarımız - Seyahat İstanbul";
+}
+@section rsHead{
+    <link href="~/Content/VehicleList.css" rel="stylesheet" />
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link href="~/Content/colorbox2.css" rel="stylesheet" />
+        <script src="~/Content/Colorbox/jquery.colorbox.js"></script>*@
+
+}
+
+<div id="dvContent">
+    <h2>Apartlarımız</h2>
+
+    <div class="vhContainer">
+
+        @foreach (var item in ViewBag.ApartList as IList<ApartList>)
+        {
+            <div class="vehicle">
+                <div class="vhHeader">
+                    <div class="vhName left">@item.Desc </div>
+                    <div class="vhPropertyTitle left">Apart Özellikleri</div>
+                    <div class="vhPriceTitle left">Fiyat Listesi</div>
+                </div>
+                <div class="vhContent">
+                    <div class="vhImage left">
+                        <p>
+                            <a class="class_@item.ApartId" href="@Url.Content("~/Content/img/RentApart/" + @item.imageRoute_1)" title="1">
+                                <img src="@Url.Content("~/Content/img/RentApart/" + @item.imageRoute_2)" width="210" height="130" alt="resim yükleniyor" />
+                            </a>
+                        </p>
+
+                    </div>
+                    <div class="vhProperty left">
+                        <div class="icon left">
+                            <img src="~/Content/img/location_icon.png" alt="resim yükleniyor" />
+                        </div>
+                        <div class="property left">@item.County</div>
+                        <div class="clear"></div>
+                        <div class="icon left">
+                            <img src="~/Content/img/size_icon.png" alt="resim yükleniyor" />
+                        </div>
+                        <div class="property left">@item.RoomSize</div>
+                        <div class="clear"></div>
+                        <div class="icon left">
+                            <img src="~/Content/img/people-icon.jpg" alt="resim yükleniyor" />
+                        </div>
+                        <div class="property left">@item.Properties</div>
+                    </div>
+                    <div class="vhPrice left">
+                        <div class="priceDay left">1-7 Gün </div>
+                        <div class="price left">@item.price_1_7</div>
+                        <div class="clear2"></div>
+                        <div class="priceDay left">8-15 Gün </div>
+                        <div class="price left">@item.price_8_15</div>
+                        <div class="clear2"></div>
+                        <div class="priceDay left">16-24 Gün </div>
+                        <div class="price left">@item.price_16_24</div>
+                        <div class="clear2"></div>
+                        <div class="priceDay left">25+ Gün </div>
+                        <div class="price left">@item.price_25</div>
+                    </div>
+                    <div class="bookingContent right">
+                        <a href="@Url.Action("VehicleBooking", "Booking", new { id = @item.fulName })"
+                           style="text-decoration: none;">
+                            <div class="btnBooking">Rezarvasyon Yap</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $(document).ready(function () {
+                    $(".class_@item.ApartId").colorbox({ rel: 'class_@item.ApartId', slideshow: true });
+                });
+            </script>
+            foreach (var item2 in item.imageList as IList<Images>)
+            {
+                <p style="display: none">
+                    <a class="class_@item.ApartId" href="@Url.Content("~/Content/img/RentApart/" + @item2.chRoute)" title="1">
+                    </a>
+                </p>
+            }
+        }
+
+
+    </div>
+</div>
+
+
+@* <a class="@item.ApartId"  href=@Url.Content("~/Content/img/RentApart/" + @item.imageRoute_1)" title="Me and my grandfather on the Ohoopee."*@
